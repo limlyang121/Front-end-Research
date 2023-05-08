@@ -51,15 +51,15 @@ const LandingPage = () => {
                 </tr>
               </tbody>
             </Table>
-
+            <h4>
+              <ol style={{ textAlign: "left" }} >
+                <li> User above can't be modified (Update, Delete, Reset password) </li>
+                <li> All Password for existing account is 'test123' (can check in postgreSQL which account is premade) </li>
+                <li> the username can be check with Admin - User Account</li>
+              </ol>
+            </h4>
           </Container>
-          <h4 style={{ textAlign: "center" }}>
-            <ol style={{ textAlign: "left" }} >
-              <li> User above can't be modified (Update, Delete, Reset password) </li>
-              <li> All Password for existing account is 'test123' (can check in postgreSQL which account is premade) </li>
-              <li> the username can be check with Admin - User Account</li>
-            </ol>
-          </h4>
+
 
         </fieldset>
 
