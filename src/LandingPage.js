@@ -134,10 +134,18 @@ const LandingPage = () => {
 
           <Container style={{ width: "70%" }}  >
             <h5>
-              The speed to get Database might have little bit of delay as i using free tier Hosting from Render <br />
-              Backend and Frontend will using heroku, Since heroku support auto-deploy, it will be easier to fix bug <br />
-              if you have encounter any bug, can send a email to  <br />
-              Limlyang121@outlook.com
+              <ol style={{ textAlign: "left" }} >
+                <li>
+                  The speed to get Database might have little bit of delay as i using free tier Hosting from Render 
+                </li>
+                <li>
+                  Backend and Frontend will using heroku, Since heroku support auto-deploy, it will be easier to fix bug <br />
+                </li>
+                <li>
+                if you have encounter any bug, can send a email to
+                  Limlyang121@outlook.com
+                </li>
+              </ol>
             </h5>
           </Container>
 
@@ -159,6 +167,13 @@ const LandingPage = () => {
                   if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone <br />
                   because it was accepted/reject by other conference.
                 </li>
+                <li>
+                  Navbar, The size is different from when i run localhost ( Will fix in next update)
+                </li>
+                <li>
+                  Some Alert Not showing when it work in local Host (Will fix in next update)
+                </li>
+
               </ol>
 
             </h5>
