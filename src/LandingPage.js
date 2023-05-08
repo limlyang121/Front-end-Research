@@ -9,7 +9,7 @@ const LandingPage = () => {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Note</h2>
-      <hr style={{height:"20px" }} />
+      <hr style={{ height: "20px" }} />
       <Container fluid>
         <br />
 
@@ -152,10 +152,15 @@ const LandingPage = () => {
 
           <Container style={{ width: "70%" }}  >
             <h5>
-              Because i design this project with internal company use, so a conference chair will be able to view and allocate all Bids  <br /> 
-              and manage all publication  of all papers. since i host the project to showcase. <br/>
-              if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone <br/>
-              because it was accepted/reject by other conference.
+              <ol style={{ textAlign: "left" }} >
+                <li>
+                  Because i design this project with internal company use, so a conference chair will be able to view and allocate all Bids  <br />
+                  and manage all publication  of all papers. since i host the project to showcase. <br />
+                  if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone <br />
+                  because it was accepted/reject by other conference.
+                </li>
+              </ol>
+
             </h5>
           </Container>
 
