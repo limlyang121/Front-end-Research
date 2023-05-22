@@ -161,16 +161,12 @@ const LandingPage = () => {
             <h5>
               <ol style={{ textAlign: "left" }} >
                 <li>
-                  Because i design this project with internal company use, so a conference chair will be able to view and allocate all Bids  <br />
-                  and manage all publication  of all papers. since i host the project to showcase. <br />
-                  if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone <br />
-                  because it was accepted/reject by other conference.
-                </li>
-                <li>
-                  Navbar, The size is different from when i run localhost ( Will fix in next update)
-                </li>
-                <li>
-                  Some Alert Not showing when it work in local Host (Will fix in next update)
+                  <p style={{textAlign:"justify"}}>
+                    Because i design this project with internal company use, so a conference chair will be able to view and allocate all Bids  
+                    and manage all publication  of all papers. since i host the project to showcase. 
+                    if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone 
+                    because it was accepted/reject by other conference.
+                  </p>
                 </li>
 
               </ol>

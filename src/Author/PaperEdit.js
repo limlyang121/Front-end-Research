@@ -130,7 +130,7 @@ function PaperEdit() {
             <AppNavbar />
             <AuthorSecurity />
 
-            <Container>
+            <Container fluid>
 
                 {loading ? (
                     <div style={{ textAlign: 'center', margin: '20px' }}>
