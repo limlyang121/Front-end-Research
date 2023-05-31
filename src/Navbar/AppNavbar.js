@@ -41,7 +41,7 @@ const AppNavbar = () => {
 
       <Navbar color="dark" dark expand="md" >
         <Container fluid>
-          <div style={{display:"flex"}} >
+          <div style={{ display: "flex" }} >
             <NavbarBrand tag={Link} to="/home"  ><h2>Home</h2></NavbarBrand>
             <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
             <Collapse isOpen={isOpen} navbar>
@@ -144,14 +144,23 @@ const AppNavbar = () => {
 
               <Nav className="justify-content-end" style={{ width: "100%", gap: "10px" }} navbar>
                 <NavItem>
+                  <Button >
+                    <Link to={"/profile"} style={{ textDecoration: "none", color: "white" }}>
+                      Profile
+                    </Link>
+                  </Button>
+                </NavItem>
+
+                <NavItem>
                   <Form onSubmit={logoutButton} method="post">
                     <FormGroup>
                       <Button type='submit'>
-                        <NavbarText>Log out</NavbarText>
+                        <NavbarText style={{ textDecoration: "none", color: "white" }} >Log out</NavbarText>
                       </Button>
                     </FormGroup>
                   </Form>
                 </NavItem>
+                
               </Nav>
             </Collapse>
           </div>

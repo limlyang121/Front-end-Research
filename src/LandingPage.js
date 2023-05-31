@@ -76,7 +76,6 @@ const LandingPage = () => {
             <h4>
               <ol style={{ textAlign: "left" }} >
                 <li>Only Admin can Register a new User </li>
-                <li>Only Admin can Edit other user Profile </li>
               </ol>
             </h4>
           </Container>

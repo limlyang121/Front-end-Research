@@ -66,7 +66,7 @@ function Login() {
           {loading ? (
             <CircularProgress />
           ) : (
-            <input type="submit" />
+            <input type="submit" value="Login"  />
           )}
         </div>
 

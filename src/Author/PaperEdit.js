@@ -180,10 +180,6 @@ function PaperEdit() {
                             ) : (
                                 <Button type='submit' color='primary'>Submit</Button>
                             )}
-
-
-
-
                         </Form>
 
                     </div>
