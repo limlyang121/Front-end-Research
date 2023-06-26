@@ -11,7 +11,13 @@ const LandingPage = () => {
       <h2 style={{ textAlign: "center" }}>Note</h2>
       <hr style={{ height: "20px" }} />
       <Container fluid>
-        <br />
+
+        <div style={{ textAlign: "center" }}>
+
+          <Button color='primary' tag={Link} to="/login" >Try the System</Button>
+        </div>
+
+        <br style={{ marginBottom: "10px" }} />
 
 
         <fieldset>
@@ -160,10 +166,10 @@ const LandingPage = () => {
             <h5>
               <ol style={{ textAlign: "left" }} >
                 <li>
-                  <p style={{textAlign:"justify"}}>
-                    Because i design this project with internal company use, so a conference chair will be able to view and allocate all Bids  
-                    and manage all publication  of all papers. since i host the project to showcase. 
-                    if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone 
+                  <p style={{ textAlign: "justify" }}>
+                    Because i design this project with internal company use, so a conference chair will be able to view and allocate all Bids
+                    and manage all publication  of all papers. since i host the project to showcase.
+                    if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone
                     because it was accepted/reject by other conference.
                   </p>
                 </li>
