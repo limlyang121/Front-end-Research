@@ -9,11 +9,13 @@ const LandingPage = () => {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Note</h2>
+      <div style={{color:"red", textAlign:"center"}}>
+        Some Minor Alert is not working (only few)
+      </div>
       <hr style={{ height: "20px" }} />
       <Container fluid>
 
         <div style={{ textAlign: "center" }}>
-
           <Button color='primary' tag={Link} to="/login" >Try the System</Button>
         </div>
 
