@@ -128,59 +128,6 @@ const LandingPage = () => {
           </Container>
 
         </fieldset>
-
-        <fieldset>
-          <legend>
-            <h1>
-              Final Note
-            </h1>
-          </legend>
-
-          <Container style={{ width: "70%" }}  >
-            <h5>
-              <ol style={{ textAlign: "left" }} >
-                <li>
-                  The speed to get Database might have little bit of delay as i using free tier Hosting from Render
-                </li>
-                <li>
-                  Backend and Frontend will using heroku, Since heroku support auto-deploy, it will be easier to fix bug <br />
-                </li>
-                <li>
-                  if you have encounter any bug, can send a email to
-                  Limlyang121@outlook.com
-                </li>
-              </ol>
-            </h5>
-          </Container>
-
-        </fieldset>
-
-        <fieldset>
-          <legend>
-            <h1>
-              Possible Bug
-            </h1>
-          </legend>
-
-          <Container style={{ width: "70%" }}  >
-            <h5>
-              <ol style={{ textAlign: "left" }} >
-                <li>
-                  <p style={{ textAlign: "justify" }}>
-                    Because i design this project with internal company use, so a conference chair will be able to view and allocate all Bids
-                    and manage all publication  of all papers. since i host the project to showcase.
-                    if by any chance, two people testing same function it might cause some confusion such as paper suddenly gone
-                    because it was accepted/reject by other conference.
-                  </p>
-                </li>
-
-              </ol>
-
-            </h5>
-          </Container>
-
-        </fieldset>
-
         <br />
 
 

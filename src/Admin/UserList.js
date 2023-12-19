@@ -23,7 +23,6 @@ const UserList = () => {
       let response = await getAllUsers();
       setUsers(response)
       setLoading(false)
-
     }
 
     const fecthDataNonActive = async () => {
