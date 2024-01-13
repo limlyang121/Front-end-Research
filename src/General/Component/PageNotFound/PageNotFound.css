@@ -1,0 +1,15 @@
+.PageNotFound{
+    margin: 100px;
+    text-align: center;
+}
+
+.PageNotFound h1{
+    font-size: 75px;
+}
+
+.PageNotFound button{
+    background-color:transparent;
+    color: rgb(91, 48, 232);
+    font-size: 25px;
+    border: 0px;
+}

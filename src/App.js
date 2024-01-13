@@ -17,7 +17,6 @@ import PaperList from './Author/PaperList';
 import PaperRead from './Author/PaperRead';
 import ReviewerBid from './Reviewer/ReviewerBid';
 import ReviewerBidStatus from './Reviewer/ReviewerBidStatus';
-import AccessDenied from './Security/Access-Denied';
 import ConferenceReviewerBid from './ConferenceChair/ConferenceReviewerBid';
 import ReviewerReview from './Reviewer/ReviewerReviewList';
 import ReviewerReviewForm from './Reviewer/ReviewerReviewForm';
@@ -28,6 +27,8 @@ import ConferenceAllReviewerReviews from './ConferenceChair/ConferenceAllReviewe
 import GoogleDriveUpload from './Author/Test/GoogleDriveUpload';
 import PaperPublishList from './Author/PaperPublishList';
 import ProfileUpdate from './General/ProfileUpdate';
+import PageNotFound from './General/Component/PageNotFound/PageNotFound';
+import AccessDenied from './General/Component/AccessDenied/AccessDenied';
 
 
 const App = () => {
@@ -81,6 +82,12 @@ const App = () => {
 
             {/* Access Denied */}
             <Route path='/denied' exact={true} element={<AccessDenied />} />
+
+
+            {/* Page not found */}
+            <Route path='*' exact={true} element={<PageNotFound />} />
+
+
 
 
 

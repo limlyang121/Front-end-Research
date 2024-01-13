@@ -18,7 +18,7 @@ api.interceptors.request.use(async (config) => {
     return config
 })
 
-export const getAllUsers = async () => {
+export const getAllUsers = async () => { 
     let response = await api.get("users")
     return response.data;
 
