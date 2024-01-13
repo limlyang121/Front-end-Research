@@ -44,7 +44,7 @@ function ProfileList() {
                 <td style={{ whiteSpace: 'nowrap' }}>{role.desc}</td>
                 <td>
                     <ButtonGroup style={{ gap: "10px" }}>
-                        <Button size="sm" color="primary" tag={Link} to={"/admin/roles/form/" + role.role}>Edit</Button>
+                        <Button size="sm" color="primary" tag={Link} to={`/admin/roles/form/${role.role}`}>Edit</Button>
                         <Button size="sm" color="danger" onClick={() => remove(role.role)}>Delete</Button>
                     </ButtonGroup>
                 </td>

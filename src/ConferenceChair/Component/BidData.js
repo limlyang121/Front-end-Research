@@ -27,9 +27,9 @@ export default function BidData({ paperList }) {
                             <td style={{ whiteSpace: "nowrap" }} > {fullName(paper.paper)}  </td>
                             <td>
                                 <ButtonGroup style={{ gap: "10px" }}>
-                                    <Button color='warning' tag={Link} to={`/conference/papers/` + paper.paper.paperID + `/bids`} > Bid Status</Button>
+                                    <Button color='warning' tag={Link} to={`/conference/papers/${paper.paper.paperID}/bids`} > Bid Status</Button>
                                     {paper.allReviewed &&
-                                        <Button color='primary' tag={Link} to={`/conference/papers/` + paper.paper.paperID + `/reviews/Ready`} > Accept/Reject</Button>
+                                        <Button color='primary' tag={Link} to={`/conference/papers/${paper.paper.paperID}/reviews/Ready`} > Accept/Reject</Button>
                                     }
                                     {!paper.allReviewed &&
                                         <Button color='secondary' disabled > Accept/Reject</Button>

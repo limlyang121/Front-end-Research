@@ -71,8 +71,8 @@ const UserList = () => {
   const activeAction = (user) => {
     return (
       <ButtonGroup>
-        <Button size="sm" color="info" tag={Link} to={"/admin/users/read/" + user.id}>Read</Button>
-        <Button size="sm" color="primary" tag={Link} to={"/admin/users/form/" + user.id}>Edit</Button>
+        <Button size="sm" color="info" tag={Link} to={`/admin/users/read/${user.id}`}>Read</Button>
+        <Button size="sm" color="primary" tag={Link} to={`/admin/users/form/${user.id}`}>Edit</Button>
         <Button size="sm" color="warning" onClick={async () => deactiveAccount(user.id)}>Deactive</Button>
       </ButtonGroup>
     )

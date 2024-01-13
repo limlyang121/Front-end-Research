@@ -48,8 +48,8 @@ function PaperList() {
                 <td style={{ whiteSpace: "nowrap" }} > {dateFormat(paper.paperInfo.upload)}  </td>
                 <td>
                     <ButtonGroup style={{ gap: "10px" }}>
-                        <Button size="sm" color="info" tag={Link} to={"/author/papers/read/" + paper.paperID}>Read</Button>
-                        <Button size="sm" color="primary" tag={Link} to={"/author/papers/form/" + paper.paperID}>Edit</Button>
+                        <Button size="sm" color="info" tag={Link} to={`/author/papers/read/${paper.paperID}`}>Read</Button>
+                        <Button size="sm" color="primary" tag={Link} to={`/author/papers/form/${paper.paperID}`}>Edit</Button>
                         {paper.status === "Pending" ? (
                             <Button size="sm" color="danger" onClick={() => remove(paper.paperID)}>Delete</Button>
                         ) : (

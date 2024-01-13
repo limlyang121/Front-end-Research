@@ -77,7 +77,7 @@ function ReviewerReviewList() {
                 <td style={{ whiteSpace: "nowrap" }} > {bid.paper.paperInfo.filename}  </td>
                 <td>
                     <ButtonGroup style={{ gap: "10px" }} >
-                        <Button color='primary' tag={Link} to={"/reviewer/review/" + bid.bidID + "/new"}> Review!</Button>
+                        <Button color='primary' tag={Link} to={`/reviewer/review/${bid.bidID}/new`}> Review!</Button>
                         <Button size="sm" color="info" onClick={async () => downloadFile(bid.paper.paperID)} > Download</Button>
                     </ButtonGroup>
                 </td>
@@ -94,7 +94,7 @@ function ReviewerReviewList() {
                 <td>
                     <ButtonGroup style={{ gap: "10px" }} >
                         {reviews.bid.paper.status === "Pending" &&
-                            <Button color='info' tag={Link} to={"/reviewer/review/" + reviews.reviewID + "/edit"}> Edit Review</Button>
+                            <Button color='info' tag={Link} to={`/reviewer/review/${reviews.reviewID}/edit`}> Edit Review</Button>
                         }
                         {reviews.bid.paper.status !== "Pending" &&
                             <Button color='secondary' onClick={() => alert("Paper is ready to be Accept/Reject")} > Edit Review</Button>
