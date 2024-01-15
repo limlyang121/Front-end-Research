@@ -44,7 +44,6 @@ function ConferenceAllReviewerReviews() {
 
     return (
         <div>
-            <AppNavbar />
             <ConferenceSecurity />
 
             <Container fluid>

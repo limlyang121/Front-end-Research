@@ -22,7 +22,6 @@ function Login() {
 
     const formData = new FormData(event.target)
     const data = Object.fromEntries(formData.entries())
-
     try {
       let tokenData = await LoginUser(data)
       storeTokenData(tokenData)

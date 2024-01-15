@@ -116,7 +116,6 @@ const UserEdit = () => {
 
     return (
         <div>
-            <AppNavbar />
             <AdminSecurity />
 
             <Container>

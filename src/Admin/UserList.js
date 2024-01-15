@@ -113,7 +113,7 @@ const UserList = () => {
   return (
     <div>
       <AdminSecurity />
-      <AppNavbar />
+      {/* <AppNavbar /> */}
 
       <Container fluid>
         <div className="float-end">

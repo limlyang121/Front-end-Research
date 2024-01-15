@@ -108,7 +108,6 @@ function ReviewerReviewList() {
 
     return (
         <div>
-            <AppNavbar />
             <ReviewerSecurity />
             <Container fluid>
                 <h3>Review List</h3>

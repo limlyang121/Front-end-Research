@@ -55,7 +55,6 @@ function ProfileList() {
 
     return (
         <div>
-            <AppNavbar />
             <AdminSecurity />
 
             <Container fluid>

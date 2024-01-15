@@ -127,7 +127,6 @@ function PaperEdit() {
 
     return (
         <div>
-            <AppNavbar />
             <AuthorSecurity />
 
             <Container fluid>

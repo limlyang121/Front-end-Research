@@ -86,7 +86,6 @@ const UserRead = () => {
                 `}
 
             </style>
-            <AppNavbar />
             <AdminSecurity />
 
             <Container>

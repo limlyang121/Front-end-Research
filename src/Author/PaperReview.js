@@ -72,7 +72,6 @@ function PaperReview() {
 
     return (
         <div>
-            <AppNavbar />
             <AuthorSecurity />
             <Container fluid>
                 <br />

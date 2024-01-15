@@ -82,7 +82,6 @@ function ProfileUpdate() {
 
     return (
         <div>
-            <AppNavbar />
             <Container>
                 <br />
                 {loading ? (

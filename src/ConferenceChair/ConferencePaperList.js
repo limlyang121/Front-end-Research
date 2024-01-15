@@ -71,7 +71,6 @@ function ConferencePaperList() {
 
     return (
         <div>
-            <AppNavbar />
             <ConferenceSecurity />
 
             <Container fluid>

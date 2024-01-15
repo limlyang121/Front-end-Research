@@ -44,7 +44,6 @@ function PaperRead() {
 
     return (
         <div>
-            <AppNavbar />
             <AuthorSecurity />
             <Container>
                 <br />

@@ -4,11 +4,16 @@ import { useNavigate } from 'react-router-dom';
 const SessionCheck = () => {
     const navigate = useNavigate();
 
-    useEffect (() => {
-        const session = sessionStorage.getItem("username")
-        if (!session){
+    useEffect (async () => {
+        try{
+            const session = sessionStorage.getItem("username")
+            if (!session){
+                navigate("/")
+            }
+        }catch {
             navigate("/")
         }
+        
     }, [navigate])
 
     return null;

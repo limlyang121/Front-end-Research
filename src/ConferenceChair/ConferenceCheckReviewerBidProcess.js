@@ -38,7 +38,6 @@ function ConferenceCheckReviewerBidProcess() {
 
     return (
         <div>
-            <AppNavbar />
             <ConferenceSecurity />
 
             <Container fluid>

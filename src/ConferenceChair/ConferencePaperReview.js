@@ -87,7 +87,6 @@ function ConferencePaperReview() {
 
     return (
         <div>
-            <AppNavbar />
             <ConferenceSecurity />
             <Container fluid>
                 <br />

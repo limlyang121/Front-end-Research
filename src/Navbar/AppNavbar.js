@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse, FormGroup, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, Form, Button, NavbarText, Container } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../General/Axios';
 import { useNavigate } from 'react-router-dom';
 import SessionCheck from '../Security/SessionCheck';
@@ -10,21 +10,31 @@ import "./AppNavbar"
 const AppNavbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [myRole, setRoles] = useState([])
+  const [myRole, setRoles] = useState(() => {
+    const storedRole = sessionStorage.getItem("myRole");
+    return storedRole || '';
+  })
 
 
   const navigate = useNavigate();
+  const location = useLocation();
 
 
   useEffect(() => {
     const fetchMyData = async () => {
-      let roleName = sessionStorage.getItem("myRole")
-      setRoles(roleName)
+      try {
+        let roleName = sessionStorage.getItem("myRole")
+        if (roleName != null){
+          setRoles (roleName)
+        }
+      }catch {
+        alert("System Maintance")
+      }
 
     }
 
     fetchMyData()
-  }, [])
+  }, [location.pathname])
 
 
   const logoutButton = async (event) => {
@@ -35,9 +45,15 @@ const AppNavbar = () => {
     }
   }
 
+  const isLandingOrLoginPage = location.pathname === '/' || location.pathname === '/login';
+
+  // If it's the landing or login page, don't render the navbar
+  if (isLandingOrLoginPage) {
+    return null;
+  }
+
   return (
     <>
-      <SessionCheck />
 
       <Navbar color="dark" dark expand="md" >
         <Container fluid>
@@ -160,7 +176,7 @@ const AppNavbar = () => {
                     </FormGroup>
                   </Form>
                 </NavItem>
-                
+
               </Nav>
             </Collapse>
           </div>

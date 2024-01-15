@@ -79,7 +79,6 @@ function PaperPublishList() {
 
     return (
         <div>
-            <AppNavbar />
             <AuthorSecurity />
 
             <Container fluid>

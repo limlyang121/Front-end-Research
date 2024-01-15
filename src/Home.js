@@ -13,7 +13,6 @@ const Home = () => {
 
   return (
     <div>
-      <AppNavbar />
       <div className='welcome-container' >
         <img src="/img/background.png" alt='' className='backgroundImage' />
         <div className='welcomeText'>

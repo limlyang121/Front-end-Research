@@ -65,7 +65,6 @@ function PaperList() {
 
     return (
         <div>
-            <AppNavbar />
             <AuthorSecurity />
 
             <Container fluid>

@@ -109,7 +109,6 @@ function ReviewerReviewForm() {
 
     return (
         <div>
-            <AppNavbar />
             <ReviewerSecurity />
 
             <Container fluid>

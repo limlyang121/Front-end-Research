@@ -76,7 +76,6 @@ function ProfileEdit() {
 
     return (
         <div>
-            <AppNavbar />
             <AdminSecurity />
             <Container>
                 {title}

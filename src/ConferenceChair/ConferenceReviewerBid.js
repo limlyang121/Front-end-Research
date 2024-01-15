@@ -140,7 +140,6 @@ function ConferenceReviewerBid() {
 
     return (
         <div>
-            <AppNavbar />
             <ConferenceSecurity />
             <Container fluid>
                 <h3>Reviewer Bid</h3>

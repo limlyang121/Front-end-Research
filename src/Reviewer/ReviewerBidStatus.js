@@ -89,7 +89,6 @@ function ReviewerBidStatus() {
 
     return (
         <div>
-            <AppNavbar />
             <ReviewerSecurity />
             <Container fluid>
                 <h3>Bid Status</h3>

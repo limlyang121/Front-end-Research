@@ -175,7 +175,6 @@ function ReviewerBid() {
 
     return (
         <div>
-            <AppNavbar />
             <ReviewerSecurity />
             <Container fluid>
                 <h3>Bid Papers</h3>
