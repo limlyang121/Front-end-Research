@@ -3,8 +3,6 @@
 import * as React from 'react';
 import { fetchAllReviewsByPaperIDAPI } from './Axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import AppNavbar from '../Navbar/AppNavbar';
-import ConferenceSecurity from './ConferenceSecurity';
 import AllReviewsForSpecifiedPaper from './Component/AllReviewsForSpecifiedPaper';
 import { Container } from 'reactstrap';
 import { CircularProgress } from "@material-ui/core";
@@ -44,8 +42,6 @@ function ConferenceAllReviewerReviews() {
 
     return (
         <div>
-            <ConferenceSecurity />
-
             <Container fluid>
 
                 <br />

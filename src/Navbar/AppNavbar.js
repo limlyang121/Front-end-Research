@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Collapse, FormGroup, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, Form, Button, NavbarText, Container } from 'reactstrap';
 import { Link, useLocation } from 'react-router-dom';
-import { logout } from '../General/Axios';
+import { logout } from '../General/Axios/Axios';
 import { useNavigate } from 'react-router-dom';
-import SessionCheck from '../Security/SessionCheck';
 import "./AppNavbar"
 
 

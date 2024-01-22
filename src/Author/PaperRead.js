@@ -4,11 +4,9 @@ import * as React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Card, CardBody, CardHeader, CardText, Container } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AppNavbar from '../Navbar/AppNavbar';
 import { getPaperByID } from './Axios';
 import './PaperRead.css'
 
-import AuthorSecurity from './AuthorSecurity';
 import { dateFormat, displayErrorMessage } from '../General/GeneralFunction';
 
 function PaperRead() {
@@ -44,7 +42,6 @@ function PaperRead() {
 
     return (
         <div>
-            <AuthorSecurity />
             <Container>
                 <br />
                 <Card>

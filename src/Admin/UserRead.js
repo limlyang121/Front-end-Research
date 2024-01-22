@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { getUserByID, resetPasswordAPI } from './adminAxios';
 import { useNavigate, useParams } from 'react-router-dom';
-import AdminSecurity from './AdminSecurity';
 import { displayErrorMessage } from '../General/GeneralFunction';
 
 const UserRead = () => {
@@ -73,9 +71,6 @@ const UserRead = () => {
 
     }
 
-
-
-
     return (
         <div>
             <style>
@@ -86,8 +81,6 @@ const UserRead = () => {
                 `}
 
             </style>
-            <AdminSecurity />
-
             <Container>
                 <Label for='fullname'>User Full Name : </Label>
                 <Input disabled type='text' name='fullname' id='fullname' value={user.userdetails.firstName + user.userdetails.lastName}></Input>

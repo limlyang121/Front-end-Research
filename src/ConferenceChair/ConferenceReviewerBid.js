@@ -2,9 +2,7 @@
 
 import * as React from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { AcceptBidAPI, cancelBidAPI, fetchPendingBidsAPI, RejectBidAPI } from './Axios';
-import ConferenceSecurity from './ConferenceSecurity';
 
 import { FaCheck, FaRegTimesCircle } from 'react-icons/fa';
 import { MdRestore } from 'react-icons/md';
@@ -140,7 +138,6 @@ function ConferenceReviewerBid() {
 
     return (
         <div>
-            <ConferenceSecurity />
             <Container fluid>
                 <h3>Reviewer Bid</h3>
 

@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { getPendingPapers, addToBlackListAPI, getBanPapers, DeleteFromBlackListAPI, addToBidAPI } from './Axios';
 import { Button, ButtonGroup, Container, Table, Form, Input } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
-import ReviewerSecurity from './ReviewerSecurity';
 import { dateFormat, downloadFile, fullName } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
@@ -175,7 +173,6 @@ function ReviewerBid() {
 
     return (
         <div>
-            <ReviewerSecurity />
             <Container fluid>
                 <h3>Bid Papers</h3>
                 <ButtonGroup style={{ gap: "10px" }}>

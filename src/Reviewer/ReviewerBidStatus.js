@@ -3,9 +3,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { deleteFromBidAPI, getBidByStatus } from './Axios';
-import ReviewerSecurity from './ReviewerSecurity';
 import { downloadFile } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 
@@ -89,7 +87,6 @@ function ReviewerBidStatus() {
 
     return (
         <div>
-            <ReviewerSecurity />
             <Container fluid>
                 <h3>Bid Status</h3>
 

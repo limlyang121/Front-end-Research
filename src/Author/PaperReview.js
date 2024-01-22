@@ -3,8 +3,6 @@
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardBody, CardFooter, CardHeader, Container } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
-import AuthorSecurity from './AuthorSecurity';
 import { getPaperReviewsAPI } from './Axios';
 import { displayErrorMessage } from '../General/GeneralFunction';
 import { CircularProgress } from "@material-ui/core";
@@ -72,7 +70,6 @@ function PaperReview() {
 
     return (
         <div>
-            <AuthorSecurity />
             <Container fluid>
                 <br />
                 {loading ? (

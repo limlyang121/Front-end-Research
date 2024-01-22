@@ -3,9 +3,7 @@
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, ButtonGroup, Card, CardBody, CardFooter, CardHeader, Container, Form } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { acceptPaperToPublishAPI, getPaperReviewsAPI, rejectPaperToPublishAPI } from './Axios';
-import ConferenceSecurity from './ConferenceSecurity';
 import { CircularProgress } from "@material-ui/core";
 
 function ConferencePaperReview() {
@@ -87,7 +85,6 @@ function ConferencePaperReview() {
 
     return (
         <div>
-            <ConferenceSecurity />
             <Container fluid>
                 <br />
                 {loading ? (

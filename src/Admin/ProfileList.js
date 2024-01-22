@@ -2,10 +2,8 @@
 
 import * as React from 'react';
 import { deleteRole, getAllRoles } from './adminAxios'
-import AppNavbar from '../Navbar/AppNavbar';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AdminSecurity from './AdminSecurity';
 import { CircularProgress } from "@material-ui/core";
 
 
@@ -55,8 +53,6 @@ function ProfileList() {
 
     return (
         <div>
-            <AdminSecurity />
-
             <Container fluid>
                 <div className="float-end">
                     <Button color="success" tag={Link} to="/admin/roles/form/new">

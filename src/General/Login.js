@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { LoginUser } from "./Axios";
-import { storeTokenData } from "./Axios";
+import { LoginUser } from "./Axios/Axios";
+import { storeTokenData } from "./Axios/Axios";
 import { CircularProgress } from "@material-ui/core";
 
 

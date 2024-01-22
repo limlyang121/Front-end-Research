@@ -1,6 +1,6 @@
 import { saveAs } from "file-saver"
 import { format } from "date-fns"
-import { downloadPapersAPI } from "./DownloadAxios";
+import { downloadPapersAPI } from "./Axios/DownloadAxios";
 
 
 export const downloadFile = async (id) => {
@@ -28,7 +28,7 @@ export const fullName = (paper) => {
 }
 
 export const fullNameDetails = (userdetails) => {
-    return userdetails.firstName + " " + userdetails.lastName; 
+    return userdetails.firstName + " " + userdetails.lastName;
 }
 
 export const displayErrorMessage = (error, navigate, link) => {
@@ -41,6 +41,9 @@ export const displayErrorMessage = (error, navigate, link) => {
     else if (error.response.status === 404)
         alert(error.response.data.message)
 
+    else if (error.response.status === 400) {
+        alert(error.response.data.message)
+    }
 
     if (link != null)
         navigate(link)

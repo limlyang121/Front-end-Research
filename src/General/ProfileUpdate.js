@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getMyProfile, updateMyProfile } from './AxiosGeneral';
+import { getMyProfile, updateMyProfile } from './Axios/AxiosGeneral';
 import { displayErrorMessage } from './GeneralFunction';
-import AppNavbar from '../Navbar/AppNavbar';
 import { Button, Container, Form, Input, Label } from 'reactstrap';
 import { CircularProgress, FormGroup } from "@material-ui/core";
 

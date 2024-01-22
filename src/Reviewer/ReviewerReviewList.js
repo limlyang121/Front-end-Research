@@ -3,9 +3,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { getAcceptedBidAPI, getMyReviewsAPI } from './Axios';
-import ReviewerSecurity from './ReviewerSecurity';
 import { dateFormat, downloadFile } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
@@ -108,7 +106,6 @@ function ReviewerReviewList() {
 
     return (
         <div>
-            <ReviewerSecurity />
             <Container fluid>
                 <h3>Review List</h3>
 

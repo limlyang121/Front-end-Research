@@ -3,9 +3,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { getMyPapers, deletePapers } from './Axios';
-import AuthorSecurity from './AuthorSecurity';
 import { dateFormat, downloadFile } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from '@material-ui/core';
@@ -17,7 +15,6 @@ function PaperList() {
 
     React.useEffect(() => {
         setLoading(true);
-        <AuthorSecurity />
 
         const fetchData = async () => {
             let response = await getMyPapers()
@@ -65,8 +62,6 @@ function PaperList() {
 
     return (
         <div>
-            <AuthorSecurity />
-
             <Container fluid>
                 <div className='float-end'>
                     <Button color='success' tag={Link} to={"/author/papers/form/new"}>Add Paper</Button>

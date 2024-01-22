@@ -1,6 +1,6 @@
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
-import { getAxiosLink } from '../AxiosUrl';
+import { getAxiosLink } from '../../AxiosUrl';
 
 
 const api = axios.create({

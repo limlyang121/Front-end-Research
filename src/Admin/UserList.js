@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { Link } from 'react-router-dom';
 import { deactivationAccount, getAllNonActiveUsers, getAllUsers, activateAccountAPI } from './adminAxios';
-import AdminSecurity from './AdminSecurity';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
 
@@ -112,9 +110,6 @@ const UserList = () => {
 
   return (
     <div>
-      <AdminSecurity />
-      {/* <AppNavbar /> */}
-
       <Container fluid>
         <div className="float-end">
           <Button color="success" tag={Link} to="/admin/users/form/new">Add User</Button>

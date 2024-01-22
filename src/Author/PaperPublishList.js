@@ -4,8 +4,6 @@ import * as React from 'react';
 import { getMyPublishPapersAPI } from './Axios';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Input, Label, Table } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
-import AuthorSecurity from './AuthorSecurity';
 import { dateFormat, downloadFile } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { fullNameDetails } from '../General/GeneralFunction';
@@ -79,8 +77,6 @@ function PaperPublishList() {
 
     return (
         <div>
-            <AuthorSecurity />
-
             <Container fluid>
 
                 <h3 style={{ marginBottom: "20px", marginTop: "20px" }}> Publish Papers</h3>

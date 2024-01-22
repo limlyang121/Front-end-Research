@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getAxiosLink } from '../AxiosUrl';
+import { getAxiosLink } from '../../AxiosUrl';
 
 const download = axios.create({
     baseURL: getAxiosLink(),

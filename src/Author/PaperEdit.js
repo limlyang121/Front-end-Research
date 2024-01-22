@@ -2,11 +2,9 @@
 
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import AppNavbar from '../Navbar/AppNavbar';
 import { Container, Input, Button, Form } from 'reactstrap';
 import { addPapers } from './Axios';
 import { getPaperByID, updatePaper } from './Axios';
-import AuthorSecurity from './AuthorSecurity';
 import { displayErrorMessage } from '../General/GeneralFunction';
 import { CircularProgress } from "@material-ui/core";
 
@@ -127,8 +125,6 @@ function PaperEdit() {
 
     return (
         <div>
-            <AuthorSecurity />
-
             <Container fluid>
 
                 {loading ? (

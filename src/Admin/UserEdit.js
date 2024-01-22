@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { updateUser, addUser, getUserByID, getAllRoles } from './adminAxios';
-import AdminSecurity from './AdminSecurity';
 import { displayErrorMessage } from '../General/GeneralFunction';
 import { CircularProgress } from '@material-ui/core';
 
@@ -116,8 +114,6 @@ const UserEdit = () => {
 
     return (
         <div>
-            <AdminSecurity />
-
             <Container>
                 {title}
                 <Form onSubmit={handleSubmit} style={{fontSize:'1.2rem', fontWeight:'bold'}}>

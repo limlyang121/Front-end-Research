@@ -2,9 +2,7 @@
 
 import * as React from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
 import { closeBidToReadyPapersAPI, fetchCompletedPapersAPI, fetchPendingPaperAPI, fetchReadytoBePublishOrRejectAPI } from './Axios';
-import ConferenceSecurity from './ConferenceSecurity';
 import BidData from './Component/BidData';
 import PaperData from './Component/PaperData';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
@@ -71,8 +69,6 @@ function ConferencePaperList() {
 
     return (
         <div>
-            <ConferenceSecurity />
-
             <Container fluid>
                 <h3>Publish Papers</h3>
                 <br />

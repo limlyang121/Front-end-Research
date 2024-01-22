@@ -3,8 +3,6 @@
 import * as React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
-import AppNavbar from '../Navbar/AppNavbar';
-import ReviewerSecurity from './ReviewerSecurity';
 import { getOneReviewsAPI, SubmitReviewAPI, UpdateReviewAPI } from './Axios';
 import { displayErrorMessage } from '../General/GeneralFunction';
 import { CircularProgress } from "@material-ui/core";
@@ -109,8 +107,6 @@ function ReviewerReviewForm() {
 
     return (
         <div>
-            <ReviewerSecurity />
-
             <Container fluid>
                 {loading ? (
                     <div style={{ textAlign: 'center', margin: '20px' }}>

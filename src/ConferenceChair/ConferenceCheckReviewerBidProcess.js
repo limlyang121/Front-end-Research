@@ -1,6 +1,4 @@
 import * as React from 'react';
-import AppNavbar from '../Navbar/AppNavbar';
-import ConferenceSecurity from './ConferenceSecurity';
 import { Button, Container, Table } from 'reactstrap';
 import { fetchAllBidsByPaperIDAPI } from './Axios';
 import { Link, useParams } from 'react-router-dom';
@@ -38,8 +36,6 @@ function ConferenceCheckReviewerBidProcess() {
 
     return (
         <div>
-            <ConferenceSecurity />
-
             <Container fluid>
 
                 <br />
