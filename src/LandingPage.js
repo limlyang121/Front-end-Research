@@ -9,14 +9,20 @@ const LandingPage = () => {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>Next Update</h2>
-      <div style={{color:"#3498db", textAlign:"center"}}>
+      <div style={{ color: "#3498db", textAlign: "center" }}>
         Enhance landing page (Include what i will update next, pop out and etc)
       </div>
 
-      
+      <h2 style={{ textAlign: "center" }}>some bug</h2>
+      <div style={{ color: "red", textAlign: "center" }}>
+          if admin(username) and test123 is not working, try login to other role such as author,reviewer then log out and relogin as admin <br />
+          and vice versa
+      </div>
+
+
       <hr style={{ height: "20px" }} />
 
-      
+
       <Container fluid>
 
         <div style={{ textAlign: "center" }}>
