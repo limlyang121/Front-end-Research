@@ -8,11 +8,15 @@ const LandingPage = () => {
 
   return (
     <div>
-      <h2 style={{ textAlign: "center" }}>Note</h2>
-      <div style={{color:"red", textAlign:"center"}}>
-        Some Minor Alert is not working (only few)
+      <h2 style={{ textAlign: "center" }}>Next Update</h2>
+      <div style={{color:"#3498db", textAlign:"center"}}>
+        Enhance landing page (Include what i will update next, pop out and etc)
       </div>
+
+      
       <hr style={{ height: "20px" }} />
+
+      
       <Container fluid>
 
         <div style={{ textAlign: "center" }}>
