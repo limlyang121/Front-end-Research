@@ -1,33 +1,33 @@
 import React from 'react';
 import './App.css';
+import './LandingPage.css'
 import { Link } from 'react-router-dom';
 import { Button, Container, Table } from 'reactstrap';
 
 
 const LandingPage = () => {
 
+  const nextUpdate  = [
+    "Enchance Landing Page (this page)",
+    "Add Page Numbering in Table"
+  ]
+
+
   return (
-    <div>
+    <div className='background'>
       <h2 style={{ textAlign: "center" }}>Next Update</h2>
       <div style={{ color: "#3498db", textAlign: "center" }}>
-        Enhance landing page (Include what i will update next, pop out and etc)
+        <ol>
+          {nextUpdate.map((item, index) => (
+            <li key={index} >
+              {index + 1}. {item} <br />
+            </li>
+          ))}
+        </ol>
+
       </div>
-
-      <h2 style={{ textAlign: "center" }}>some bug</h2>
-      <div style={{ color: "red", textAlign: "center" }}>
-          if admin(username) and test123 is not working, try login to other role such as author,reviewer then log out and relogin as admin <br />
-          and vice versa
-      </div>
-
-
-      <hr style={{ height: "20px" }} />
-
 
       <Container fluid>
-
-        <div style={{ textAlign: "center" }}>
-          <Button color='primary' tag={Link} to="/login" >Try the System</Button>
-        </div>
 
         <br style={{ marginBottom: "10px" }} />
 
@@ -137,6 +137,12 @@ const LandingPage = () => {
               </h5>
             </div>
 
+            <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: '1000' }}>
+              <Button className='rounded-circle' style={{ display: "flex", justifyContent: 'center' }} color='primary' tag={Link} to="/login">
+                <span></span> Try the System
+              </Button>
+            </div>
+
           </Container>
 
         </fieldset>
@@ -150,9 +156,9 @@ const LandingPage = () => {
 
         <br style={{ marginBottom: "10px" }} />
 
-
       </Container>
     </div>
+
   );
 }
 
