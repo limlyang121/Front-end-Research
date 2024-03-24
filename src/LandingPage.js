@@ -7,9 +7,10 @@ import { Button, Container, Table } from 'reactstrap';
 
 const LandingPage = () => {
 
-  const nextUpdate  = [
+  const nextUpdate = [
     "Enchance Landing Page (this page)",
-    "Add Page Numbering in Table"
+    "Add Page Numbering in Table",
+    "Add More animation for better User experience"
   ]
 
 
@@ -17,13 +18,11 @@ const LandingPage = () => {
     <div className='background'>
       <h2 style={{ textAlign: "center" }}>Next Update</h2>
       <div style={{ color: "#3498db", textAlign: "center" }}>
-        <ol>
-          {nextUpdate.map((item, index) => (
-            <li key={index} >
-              {index + 1}. {item} <br />
-            </li>
-          ))}
-        </ol>
+        {nextUpdate.map((item, index) => (
+          <span key={index} >
+            {index + 1}. {item} <br />
+          </span>
+        ))}
 
       </div>
 
@@ -147,12 +146,6 @@ const LandingPage = () => {
 
         </fieldset>
         <br />
-
-
-        <div style={{ textAlign: "center" }}>
-
-          <Button color='primary' tag={Link} to="/login" >Try the System</Button>
-        </div>
 
         <br style={{ marginBottom: "10px" }} />
 
