@@ -77,7 +77,7 @@ function PaperPublishList() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
 
                 <h3 style={{ marginBottom: "20px", marginTop: "20px" }}> Publish Papers</h3>
 

@@ -1,10 +1,17 @@
-/* Footer.css */
 .footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    bottom: 0;
-    width: 100%;
-  }
-  
+  position: relative; /* Ensures footer stays at the bottom within its container */
+  flex: 0 0 auto; /* Makes footer shrink to fit content (optional) */
+  width: 100%; /* Ensures footer spans the entire width */
+  height: auto; 
+  background-color: #000000; /* Example background color */
+  padding: 1rem; /* Example padding */
+  text-align: center; /* Example text alignment (optional) */
+  color: white;
+  /* Add flex-shrink: 0; */
+  margin-top: 50px;
+}
+
+
+.content { /* Add a wrapper for your main content */
+  flex: 1; /* Makes content area flexible and fill remaining space */
+}

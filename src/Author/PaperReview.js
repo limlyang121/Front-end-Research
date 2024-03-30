@@ -70,8 +70,7 @@ function PaperReview() {
 
     return (
         <div>
-            <Container fluid>
-                <br />
+            <Container fluid className='full-height-container'>
                 {loading ? (
                     <div style={{ textAlign: 'center', margin: '20px' }}>
                         <CircularProgress color="primary" />

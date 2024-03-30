@@ -44,7 +44,7 @@ const UserEdit = () => {
                 setRole(data)
 
             } catch (error) {
-                console.error(error)
+                displayErrorMessage(error, navigate, null)
             }finally{
                 setLoading(true)
             }
@@ -103,18 +103,13 @@ const UserEdit = () => {
         }
     }
 
-    if (!loading){
-        return (
-            <p>Loading...</p>
-        )
-    }
 
     const title = <h2>{user.id ? 'Edit User' : 'Add User'}</h2>;
 
 
     return (
         <div>
-            <Container>
+            <Container fluid className='full-height-container'>
                 {title}
                 <Form onSubmit={handleSubmit} style={{fontSize:'1.2rem', fontWeight:'bold'}}>
 

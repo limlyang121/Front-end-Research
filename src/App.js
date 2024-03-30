@@ -53,7 +53,7 @@ const App = () => {
 
           </Routes>
 
-          {/* <Footer /> */}
+          <Footer />
         </Router>
       </ErrorBoundary>
 

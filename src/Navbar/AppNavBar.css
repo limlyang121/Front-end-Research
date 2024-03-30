@@ -1,4 +1,10 @@
 .custom-navbar {
     display: contents;
     align-items: center;
+    margin-bottom: 50px;
+  }
+
+  .empty-padding {
+    padding-bottom: 20px; /* Adjust the padding as needed */
+    background-color: transparent;
   }

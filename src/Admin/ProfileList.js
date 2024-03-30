@@ -53,7 +53,7 @@ function ProfileList() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <div className="float-end">
                     <Button color="success" tag={Link} to="/admin/roles/form/new">
                         Add Profile

@@ -3,6 +3,7 @@ import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 import { getUserByID, resetPasswordAPI } from './adminAxios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { displayErrorMessage } from '../General/GeneralFunction';
+import { CircularProgress } from '@material-ui/core';
 
 const UserRead = () => {
     const { id } = useParams();
@@ -37,20 +38,19 @@ const UserRead = () => {
 
     useEffect(() => {
         const fecthData = async () => {
-            let response = await getUserByID(id)
-            setUser(response)
+            try{
+                let response = await getUserByID(id)
+                setUser(response)
+                setLoading(false)
+            }catch(error){
+                displayErrorMessage(error, navigate, null)
+                navigate("/admin/users")
+            }
+
         }
         fecthData();
-        setLoading(false)
 
     }, [id, setUser]);
-
-
-    if (loading) {
-        return (
-            <p>Loading Data...</p>
-        )
-    }
 
 
     const handleNewPasswordChange = (event) => {
@@ -81,7 +81,14 @@ const UserRead = () => {
                 `}
 
             </style>
-            <Container>
+            <Container fluid className='full-height-container'>
+
+            {loading ? (
+                    <div style={{ textAlign: 'center', margin: '20px' }}>
+                        <CircularProgress color="primary" />
+                    </div>
+                ) : (
+                    <div>
                 <Label for='fullname'>User Full Name : </Label>
                 <Input disabled type='text' name='fullname' id='fullname' value={user.userdetails.firstName + user.userdetails.lastName}></Input>
 
@@ -116,6 +123,10 @@ const UserRead = () => {
                     </Form>
                 )}
                 <br />
+                        
+                    </div>
+
+                )}
 
             </Container>
         </div>

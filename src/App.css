@@ -67,3 +67,8 @@ legend {
   width: auto !important;
   margin-bottom: 20px !important;
 }
+
+/* App.css */
+.full-height-container {
+  min-height: 100vh;
+}

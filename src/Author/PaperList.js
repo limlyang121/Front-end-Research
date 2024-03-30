@@ -62,7 +62,7 @@ function PaperList() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <div className='float-end'>
                     <Button color='success' tag={Link} to={"/author/papers/form/new"}>Add Paper</Button>
                 </div>

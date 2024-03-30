@@ -81,8 +81,7 @@ function ProfileUpdate() {
 
     return (
         <div>
-            <Container>
-                <br />
+            <Container fluid className='full-height-container'>
                 {loading ? (
                     <div style={{ textAlign: 'center', margin: '20px' }}>
                         <CircularProgress color="primary" />

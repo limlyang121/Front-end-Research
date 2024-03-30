@@ -3,7 +3,7 @@ import { Collapse, FormGroup, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, 
 import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../General/Axios/Axios';
 import { useNavigate } from 'react-router-dom';
-import "./AppNavbar"
+import "./AppNavbar.css"
 
 
 const AppNavbar = () => {
@@ -54,10 +54,10 @@ const AppNavbar = () => {
   return (
     <>
 
-      <Navbar color="dark" dark expand="md" >
+      <Navbar color="dark" dark expand="md">
         <Container fluid>
-          <div style={{ display: "flex" }} >
-            <NavbarBrand tag={Link} to="/home"  ><h2>Home</h2></NavbarBrand>
+          <div style={{ display: "flex"}} >
+            <NavbarBrand tag={Link} to="/home" ><h2>Home</h2></NavbarBrand>
             <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
             <Collapse isOpen={isOpen} navbar>
               {myRole.includes("ADMIN") && (
@@ -184,6 +184,8 @@ const AppNavbar = () => {
 
       </Navbar>
 
+      <div className='empty-padding'>
+      </div>
 
 
     </>

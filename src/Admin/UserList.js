@@ -5,142 +5,143 @@ import { deactivationAccount, getAllNonActiveUsers, getAllUsers, activateAccount
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
 
-
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState("active");
-  const myID = sessionStorage.getItem("id")
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const myID = sessionStorage.getItem("id");
 
   const changeList = useCallback((stat) => {
-    setStatus(stat)
-  }, [setStatus])
+    setStatus(stat);
+  }, [setStatus]);
 
   useEffect(() => {
-    const fecthDataActive = async () => {
-      let response = await getAllUsers();
-      setUsers(response)
-      setLoading(false)
-    }
+    const fetchData = async () => {
+      setLoading(true);
+      let response;
+      if (status === "active") {
+        response = await getAllUsers();
+      } else {
+        response = await getAllNonActiveUsers();
+      }
+      setUsers(response);
+      setLoading(false);
+    };
 
-    const fecthDataNonActive = async () => {
-      let response = await getAllNonActiveUsers()
-      setUsers(response)
-      setLoading(false)
+    fetchData();
+  }, [status]);
 
-    }
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
-    setLoading(true)
+  const indexOfLastUser = currentPage * itemsPerPage;
+  const indexOfFirstUser = currentPage === 1 ? 0 : (currentPage - 1) * itemsPerPage;
 
-    if (status === "active") {
-      fecthDataActive()
-    } else {
-      fecthDataNonActive()
-    }
+  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
-
-  }, [status, changeList]);
-
-
-
-
-  const deactiveAccount = async (id) => {
+  const deactivateAccount = async (id) => {
     if (window.confirm("Are you sure? ")) {
       await deactivationAccount(id)
         .then((responseData) => {
-          alert(responseData)
-          let updatedGroups = [...users].filter(i => i.id !== id);
-          setUsers(updatedGroups)
+          alert(responseData);
+          const updatedUsers = users.filter(user => user.id !== id);
+          setUsers(updatedUsers);
         })
     }
-  }
+  };
 
   const activateAccount = async (id) => {
     if (window.confirm("Are you sure? ")) {
       await activateAccountAPI(id)
         .then((responseData) => {
-          alert(responseData)
-          let updatedGroups = [...users].filter(i => i.id !== id);
-          setUsers(updatedGroups)
+          alert(responseData);
+          const updatedUsers = users.filter(user => user.id !== id);
+          setUsers(updatedUsers);
         })
     }
-  }
+  };
 
-  const activeAction = (user) => {
-    return (
-      <ButtonGroup>
-        <Button size="sm" color="info" tag={Link} to={`/admin/users/read/${user.id}`}>Read</Button>
-        <Button size="sm" color="primary" tag={Link} to={`/admin/users/form/${user.id}`}>Edit</Button>
-        <Button size="sm" color="warning" onClick={async () => deactiveAccount(user.id)}>Deactive</Button>
-      </ButtonGroup>
-    )
-  }
+  const renderActionButtons = (user) => {
+    if (status === "active") {
+      return (
+        <ButtonGroup>
+          <Button size="sm" color="info" tag={Link} to={`/admin/users/read/${user.id}`}>Read</Button>
+          <Button size="sm" color="primary" tag={Link} to={`/admin/users/form/${user.id}`}>Edit</Button>
+          <Button size="sm" color="warning" onClick={() => deactivateAccount(user.id)}>Deactivate</Button>
+        </ButtonGroup>
+      );
+    } else {
+      return (
+        <ButtonGroup>
+          <Button size="sm" color="primary" onClick={() => activateAccount(user.id)}>Activate</Button>
+        </ButtonGroup>
+      );
+    }
+  };
 
-  const deactiveAction = (user) => {
-    return (
-      <ButtonGroup>
-        <Button size="sm" color="primary" onClick={async () => activateAccount(user.id)}>Activation</Button>
-      </ButtonGroup>
-    )
-  }
-
-  const groupList = users.map(user => {
-    return (
-      <tr key={user.id}>
-        {user.id === parseInt(myID) ? (
-          <></>
-        ) : (
-          <>
-            <td style={{ whiteSpace: 'nowrap' }}>{user.userdetails.firstName}</td>
-            <td style={{ whiteSpace: 'nowrap' }}>{user.userdetails.lastName}</td>
-            <td style={{ whiteSpace: 'nowrap' }}>{user.userName}</td>
-            <td>
-              {status === "active" && activeAction(user)}
-
-              {status === "nonactive" && deactiveAction(user)}
-
-            </td>
-          </>
-        )}
-      </tr>
-    )
-  });
-
-
+  const userList = currentUsers.map(user => (
+    <tr key={user.id}>
+      {user.id !== parseInt(myID) && (
+        <>
+          <td style={{ whiteSpace: 'nowrap' }}>{user.userdetails.firstName}</td>
+          <td style={{ whiteSpace: 'nowrap' }}>{user.userdetails.lastName}</td>
+          <td style={{ whiteSpace: 'nowrap' }}>{user.userName}</td>
+          <td>
+            {renderActionButtons(user)}
+          </td>
+        </>
+      )}
+    </tr>
+  ));
 
   return (
     <div>
-      <Container fluid>
+      <Container fluid className='full-height-container'>
         <div className="float-end">
           <Button color="success" tag={Link} to="/admin/users/form/new">Add User</Button>
         </div>
-        <h3>My Users</h3>
-
-        <ButtonGroup style={{ gap: "10px" }}>
-          <Button color='primary' onClick={() => changeList("active")} >Show Active</Button>
-          <Button color='danger' onClick={() => changeList("nonactive")}>Show Deactive</Button>
-        </ButtonGroup>
+        <h3>User Accounts</h3>
+        <Button color='primary' style={{ marginRight: '10px' }} onClick={() => changeList("active")}>Active User</Button>
+        <Button color='danger' onClick={() => changeList("nonactive")}>Deactivate User</Button>
 
         {loading ? (
           <div style={{ textAlign: 'center', margin: '20px' }}>
             <CircularProgress color="primary" />
           </div>
-        ) : groupList.length === 0 ? (
+        ) : userList.length === 0 ? (
           <NoDataToDisplay />
         ) : (
-          <Table striped bordered hover className="mt-4">
-            <thead>
-              <tr>
-                <th width="20%">First Name</th>
-                <th width="20%">Last  Name</th>
-                <th width="20%">UserName</th>
-                <th width="10%">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {groupList}
-            </tbody>
-          </Table>
+          <div>
+            <ButtonGroup style={{ gap: "10px" }}>
+
+            </ButtonGroup>
+            <Table striped bordered hover className="mt-4">
+              <thead>
+                <tr>
+                  <th width="20%">First Name</th>
+                  <th width="20%">Last  Name</th>
+                  <th width="20%">UserName</th>
+                  <th width="10%">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userList}
+              </tbody>
+            </Table>
+            {/* Pagination */}
+            <div>
+              {Array.from({ length: Math.ceil(users.length / itemsPerPage) }, (_, index) => (
+                <button key={index} onClick={() => paginate(index + 1)}>
+                  {index + 1}
+                </button>
+              ))}
+            </div>
+          </div>
+
         )}
 
       </Container>

@@ -3,6 +3,7 @@ import './App.css';
 import './LandingPage.css'
 import { Link } from 'react-router-dom';
 import { Button, Container, Table } from 'reactstrap';
+import LandingBox from './LandingPageComponent/LandingBox';
 
 
 const LandingPage = () => {
@@ -27,6 +28,9 @@ const LandingPage = () => {
       </div>
 
       <Container fluid>
+
+
+        {/* <LandingBox /> */}
 
         <br style={{ marginBottom: "10px" }} />
 
