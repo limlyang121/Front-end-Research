@@ -69,7 +69,7 @@ function ConferencePaperList() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <h3>Publish Papers</h3>
                 <br />
 

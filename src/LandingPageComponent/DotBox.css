@@ -1,0 +1,40 @@
+.dot-box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem; /* Adjust margins as desired */
+  }
+  
+  .box {
+    background-color: #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    width: 60%;
+    height: 40%;
+  }
+  
+  
+  .dots-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .dot {
+    cursor: pointer;
+    padding: 2px 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: #eee;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .dot.active {
+    background-color: #ccc;
+  }
+  
+  .active-content {
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  

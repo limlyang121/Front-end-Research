@@ -138,7 +138,7 @@ function ConferenceReviewerBid() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <h3>Reviewer Bid</h3>
 
 

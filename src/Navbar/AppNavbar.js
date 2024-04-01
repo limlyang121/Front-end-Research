@@ -52,7 +52,7 @@ const AppNavbar = () => {
   }
 
   return (
-    <>
+    <div>
 
       <Navbar color="dark" dark expand="md">
         <Container fluid>
@@ -188,7 +188,7 @@ const AppNavbar = () => {
       </div>
 
 
-    </>
+    </div>
 
 
   );

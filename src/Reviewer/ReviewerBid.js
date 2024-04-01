@@ -173,7 +173,7 @@ function ReviewerBid() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <h3>Bid Papers</h3>
                 <ButtonGroup style={{ gap: "10px" }}>
                     <Button color='primary' onClick={() => changeStatus("bid")} >Show Bid</Button>

@@ -3,8 +3,8 @@ import './App.css';
 import './LandingPage.css'
 import { Link } from 'react-router-dom';
 import { Button, Container, Table } from 'reactstrap';
-import LandingBox from './LandingPageComponent/LandingBox';
-
+import DotBox from './LandingPageComponent/DotBox';
+import BoxContent from './LandingPageComponent/BoxContent';
 
 const LandingPage = () => {
 
@@ -14,6 +14,10 @@ const LandingPage = () => {
     "Add More animation for better User experience"
   ]
 
+  
+
+  const boxContent = 'This is the box content.';
+  const dotContents = ['', 'Content 2', 'Content 3'];
 
   return (
     <div className='background'>
@@ -140,11 +144,7 @@ const LandingPage = () => {
               </h5>
             </div>
 
-            <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: '1000' }}>
-              <Button className='rounded-circle' style={{ display: "flex", justifyContent: 'center' }} color='primary' tag={Link} to="/login">
-                <span></span> Try the System
-              </Button>
-            </div>
+
 
           </Container>
 
@@ -153,7 +153,16 @@ const LandingPage = () => {
 
         <br style={{ marginBottom: "10px" }} />
 
+        {/* <DotBox boxContent={<BoxContent />} /> Pass BoxContent as the child */}
+
       </Container>
+
+      <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: '1000' }}>
+        <Button className='rounded-circle raised-button' style={{ display: "flex" }} color='primary' tag={Link} to="/login">
+          <div>Try the System</div>
+        </Button>
+      </div>
+
     </div>
 
   );

@@ -106,7 +106,7 @@ function ReviewerReviewList() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <h3>Review List</h3>
 
                 {loading ? (

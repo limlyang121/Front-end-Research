@@ -1,9 +1,9 @@
 import "./Footer.css"
 
-export default function Footer(){
+export default function Footer() {
     return (
         <div className="footer">
-            Test only
+            Footer(Will be update with data soon)
         </div>
     )
 }

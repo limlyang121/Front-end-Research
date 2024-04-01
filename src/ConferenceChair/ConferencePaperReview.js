@@ -85,7 +85,7 @@ function ConferencePaperReview() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <br />
                 {loading ? (
                     <div style={{ textAlign: 'center', margin: '20px' }}>

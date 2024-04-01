@@ -87,7 +87,7 @@ function ReviewerBidStatus() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
                 <h3>Bid Status</h3>
 
                 {loading ? (

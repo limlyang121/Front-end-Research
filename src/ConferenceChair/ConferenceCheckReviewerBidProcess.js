@@ -36,7 +36,7 @@ function ConferenceCheckReviewerBidProcess() {
 
     return (
         <div>
-            <Container fluid>
+            <Container fluid className='full-height-container'>
 
                 <br />
 

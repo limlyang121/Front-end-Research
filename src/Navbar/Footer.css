@@ -1,3 +1,8 @@
+.content {
+  background-color: #cccccc; /* Replace with your desired margin color */
+  padding-bottom: 50px; /* Maintain the same space as the margin */
+}
+
 .footer {
   position: relative; /* Ensures footer stays at the bottom within its container */
   flex: 0 0 auto; /* Makes footer shrink to fit content (optional) */
@@ -8,10 +13,11 @@
   text-align: center; /* Example text alignment (optional) */
   color: white;
   /* Add flex-shrink: 0; */
-  margin-top: 50px;
 }
 
 
 .content { /* Add a wrapper for your main content */
   flex: 1; /* Makes content area flexible and fill remaining space */
 }
+
+/* #f8f9fd */
