@@ -21,3 +21,10 @@
 }
 
 /* #f8f9fd */
+
+.created-by {
+  margin-top: 1rem;  /* Add some space above the section */
+  font-size: 0.8rem;  /* Adjust font size as needed */
+  color: #ccc;  /* Set a lighter color for this section */
+  text-align: center;  /* Maintain center alignment */
+}

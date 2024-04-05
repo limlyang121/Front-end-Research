@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Table } from 'reactstrap';
 import DotBox from './LandingPageComponent/DotBox';
 import BoxContent from './LandingPageComponent/BoxContent';
+import MyInfoBox from './LandingPageComponent/SideBox/MyInfoBox';
 
 const LandingPage = () => {
 
   const nextUpdate = [
     "Enchance Landing Page (this page)",
     "Add Page Numbering in Table",
-    "Add More animation for better User experience"
+    "Add More animation for better User experience",
   ]
 
   
@@ -125,7 +126,7 @@ const LandingPage = () => {
                 <li>Reviewer review the Paper </li>
                 <li>Once there are more than 5 Review for that paper, Conference can close the Bidding </li>
                 <li>Once all reviewer done review the papers, the conference can accept/reject the paper by see the reviewer review </li>
-                <li>Once Accepted/Rejected, Conference won't be able to Edit it </li>
+                <li>Once Paper is Accepted/Rejected, Reviewer won't be able to Edit the review </li>
               </ol>
 
 
@@ -156,6 +157,9 @@ const LandingPage = () => {
         {/* <DotBox boxContent={<BoxContent />} /> Pass BoxContent as the child */}
 
       </Container>
+
+          <MyInfoBox />
+
 
       <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: '1000' }}>
         <Button className='rounded-circle raised-button' style={{ display: "flex" }} color='primary' tag={Link} to="/login">
