@@ -13,10 +13,9 @@
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   }
   
-  
 
 .background {
-    /* background-image: url("/public/img/landingback.JPG"); */
+    background-image: url("/public/img/landingback.jpg");
     background-size: cover; /* Or 100vw 100vh for responsive scaling */
     background-repeat: no-repeat;
     background-attachment: fixed; /* This is the key! */
