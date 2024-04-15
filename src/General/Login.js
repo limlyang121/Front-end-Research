@@ -37,7 +37,7 @@ function Login() {
 
   const renderErrorMessage = () => {
     return (
-      <div className="error" style={{paddingBottom:"10px"}}>
+      <div style={{paddingBottom:"10px", color:"red"}}>
         {errorMessages}
       </div>
     );

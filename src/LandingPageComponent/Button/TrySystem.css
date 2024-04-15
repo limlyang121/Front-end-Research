@@ -1,0 +1,9 @@
+.rounded-circle {
+    /* Existing styles... */
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Horizontally center content */
+    justify-content: center; /* Vertically center content */
+    height: 150px; /* Increase height */
+    width: 150px; /* Increase width */
+  }

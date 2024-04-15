@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 import Login from "./General/Login"
-import LandingPage from './LandingPage';
+import LandingPage from './LandingPageComponent/LandingPage';
 import ProfileUpdate from './General/ProfileUpdate';
 import PageNotFound from './General/Component/PageNotFound/PageNotFound';
 import AccessDenied from './General/Component/AccessDenied/AccessDenied';

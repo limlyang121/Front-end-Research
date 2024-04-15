@@ -25,7 +25,10 @@ const LandingPage = () => {
 
   return (
     <div className='background'>
-      <h2 style={{ textAlign: "center" }}>Next Update</h2>
+      <div className='glass-background'>
+        
+      </div>
+      {/* <h2 style={{ textAlign: "center" }}>Next Update</h2>
       <div style={{ color: "#3498db", textAlign: "center" }}>
         {nextUpdate.map((item, index) => (
           <span key={index} >
@@ -33,14 +36,14 @@ const LandingPage = () => {
           </span>
         ))}
 
-      </div>
+      </div> */}
 
       <Container fluid className='full-height-container'>
 
 
         {/* <LandingBox /> */}
 
-        <br style={{ marginBottom: "10px" }} />
+        {/* <br style={{ marginBottom: "10px" }} />
 
 
         <fieldset>
@@ -153,7 +156,7 @@ const LandingPage = () => {
           </Container>
         </fieldset>
 
-        <br />
+        <br /> */}
 
         <br style={{ marginBottom: "10px" }} />
 
