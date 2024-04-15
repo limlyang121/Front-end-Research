@@ -37,7 +37,7 @@ function Login() {
 
   const renderErrorMessage = () => {
     return (
-      <div className="error">
+      <div className="error" style={{paddingBottom:"10px"}}>
         {errorMessages}
       </div>
     );
@@ -65,7 +65,7 @@ function Login() {
           {loading ? (
             <CircularProgress />
           ) : (
-            <input type="submit" value="Login"  />
+            <input type="submit" value="Login" />
           )}
         </div>
 
@@ -75,14 +75,54 @@ function Login() {
   );
 
   return (
-    <div className="app">
+    <div className="App">
       <LoginSessionCheck />
+      <div class="container-fluid ps-md-0">
+        <div class="row g-0">
+          <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+          <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-9 col-lg-8 mx-auto">
+                    <h3 class="login-heading mb-4">Welcome back!</h3>
 
-      <div className="login-form">
-        <div className="title">Sign In</div>
-        {renderForm}
+
+
+                    <form onSubmit={handleSubmit} >
+                      <div class="form-floating mb-3">
+                        <input type="username" className={"form-control"} id="floatingInput" name='username' placeholder="name@example.com" required />
+                        <label for="floatingInput">Username</label>
+                      </div>
+
+                      <div class="form-floating mb-3">
+                        <input type="password" className={"form-control"} id="floatingInput" name='password' placeholder="Password" required />
+                        <label for="floatingInput">Username</label>
+                      </div>
+
+                      {renderErrorMessage()}
+
+
+                      {loading ? (
+                        <div className="loadingStyle">
+                          <CircularProgress />
+                        </div>
+                      ) : (
+                        <div class="d-grid">
+                          <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" value={"login"}>Sign in</button>
+                        </div>
+                      )}
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
   );
 }
 

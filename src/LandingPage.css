@@ -19,4 +19,5 @@
     background-size: cover; /* Or 100vw 100vh for responsive scaling */
     background-repeat: no-repeat;
     background-attachment: fixed; /* This is the key! */
+    background-color: rgba(255, 255, 255, 0.452);
   }

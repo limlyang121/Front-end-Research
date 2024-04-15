@@ -1,0 +1,30 @@
+.slider-container {
+    margin: 0 auto !important;
+    /* Center the container horizontally */
+    justify-content: center ;
+}
+
+.slide {
+    display: inline-block;
+    /* Or display: flex; if needed */
+    width: 90% !important;
+    /* Adjust width as desired */
+    height: 400px;
+    /* Adjust height as desired */
+    background-color: rgba(255, 255, 255, 0.976);
+    /* Gray transparent background */
+    border-radius: 5px;
+    /* Existing styles... */
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    /* Light border */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Inner shadow for depth */
+    transition: all 0.2s ease-in-out;
+    /* Smooth transition on hover */
+    /* Optional rounded corners */
+}
+
+.slide:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+    /* Emphasize shadow on hover */
+}
