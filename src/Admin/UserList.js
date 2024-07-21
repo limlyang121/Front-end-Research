@@ -1,3 +1,5 @@
+import './Admin.css';
+
 import React, { useCallback, useEffect, useState } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -10,12 +12,12 @@ const UserList = () => {
   const [status, setStatus] = useState("active");
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
 
   const myID = sessionStorage.getItem("id");
 
   const changeList = useCallback((stat) => {
     setStatus(stat);
+    setCurrentPage(1); // Reset to the first page when the status changes
   }, [setStatus]);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const UserList = () => {
       setLoading(true);
       let response;
       if (status === "active") {
-        response = await getAllUsers();
+        response = await getAllUsers(currentPage);
       } else {
         response = await getAllNonActiveUsers();
       }
@@ -32,16 +34,12 @@ const UserList = () => {
     };
 
     fetchData();
-  }, [status]);
+  }, [status, currentPage]);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const indexOfLastUser = currentPage * itemsPerPage;
-  const indexOfFirstUser = currentPage === 1 ? 0 : (currentPage - 1) * itemsPerPage;
-
-  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
   const deactivateAccount = async (id) => {
     if (window.confirm("Are you sure? ")) {
@@ -68,7 +66,7 @@ const UserList = () => {
   const renderActionButtons = (user) => {
     if (status === "active") {
       return (
-        <ButtonGroup>
+        <ButtonGroup className='pagination-button'>
           <Button size="sm" color="info" tag={Link} to={`/admin/users/read/${user.id}`}>Read</Button>
           <Button size="sm" color="primary" tag={Link} to={`/admin/users/form/${user.id}`}>Edit</Button>
           <Button size="sm" color="warning" onClick={() => deactivateAccount(user.id)}>Deactivate</Button>
@@ -77,13 +75,13 @@ const UserList = () => {
     } else {
       return (
         <ButtonGroup>
-          <Button size="sm" color="primary" onClick={() => activateAccount(user.id)}>Activate</Button>
+          <Button size="smcurrentUsers" color="primary" onClick={() => activateAccount(user.id)}>Activate</Button>
         </ButtonGroup>
       );
     }
   };
 
-  const userList = currentUsers.map(user => (
+  const userList = users.map(user => (
     <tr key={user.id}>
       {user.id !== parseInt(myID) && (
         <>
@@ -134,12 +132,18 @@ const UserList = () => {
             </Table>
             {/* Pagination */}
             <div>
-              {Array.from({ length: Math.ceil(users.length / itemsPerPage) }, (_, index) => (
-                <button key={index} onClick={() => paginate(index + 1)}>
-                  {index + 1}
-                </button>
-              ))}
+              <ButtonGroup>
+                <Button className='pagination-button' color='primary' onClick={() => paginate(1)} > 1  </Button> 
+                <Button className='pagination-button' color='primary' onClick={() => paginate(2)} > 2  </Button>
+                <Button className='pagination-button' color='primary' onClick={() => paginate(3)} > 3  </Button>
+                <Button className='pagination-button' color='primary' onClick={() => paginate(4)} > 4  </Button>
+                <Button className='pagination-button' color='primary' onClick={() => paginate(5)} > 5  </Button>
+              </ButtonGroup>
+              {/* Add more buttons as needed */}
             </div>
+
+
+
           </div>
 
         )}

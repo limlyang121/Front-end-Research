@@ -18,8 +18,12 @@ api.interceptors.request.use(async (config) => {
     return config
 })
 
-export const getAllUsers = async () => { 
-    let response = await api.get("users")
+export const getAllUsers = async (pageNumber) => { 
+    let response = await api.get("users", {
+        params : {
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 
 }
