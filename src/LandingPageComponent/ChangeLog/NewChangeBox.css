@@ -1,0 +1,86 @@
+.imageStyle {
+    width: 20px; /* Use pixels (px) for width and height */
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  h1.ModalTitle {
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: center;
+    font-size: 2em; /* Make the "Change Log" text bigger */
+  }
+  
+  li {
+    margin: 10px 0;
+    padding: 0;
+    text-align: left;
+    font-size: 1.2em;
+  }
+  
+  .Modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Take 80% of the screen width */
+    height: 80%; /* Take 80% of the vertical screen */
+    background: white;
+    padding: 20px;
+    border-radius: 15px; /* Make the modal rounded */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1000; /* Ensure it appears above other elements */
+  }
+  
+  .ModalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .ChangeList {
+    width: 100%;
+    flex-grow: 1; /* Take available vertical space */
+    overflow-y: auto; /* Enable vertical scrolling if needed */
+    margin-bottom: 20px; /* Add some space between the list and the button */
+  }
+  
+  .ButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

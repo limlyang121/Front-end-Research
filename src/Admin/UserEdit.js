@@ -52,7 +52,7 @@ const UserEdit = () => {
         setLoading(false)
         fecthData();
 
-    }, [id, setUser]);
+    }, [id, setUser, navigate]);
 
 
     const handleChange = (event) => {

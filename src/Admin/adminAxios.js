@@ -28,8 +28,22 @@ export const getAllUsers = async (pageNumber) => {
 
 }
 
-export const getAllNonActiveUsers = async () => {
-    let response = await api.get("users/nonActive")
+export const getTotalUsers = async (isActive) => {
+    let response = await api.get("TotalUsers", {
+        params: {
+            isActive : isActive
+        }
+    })
+    return response.data;
+}
+
+
+export const getAllNonActiveUsers = async (pageNumber) => {
+    let response = await api.get("users/nonActive", {
+        params : {
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 
 }

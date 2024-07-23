@@ -3,7 +3,7 @@ import './Admin.css';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { deactivationAccount, getAllNonActiveUsers, getAllUsers, activateAccountAPI } from './adminAxios';
+import { deactivationAccount, getAllNonActiveUsers, getAllUsers, activateAccountAPI, getTotalUsers } from './adminAxios';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
 
@@ -12,6 +12,8 @@ const UserList = () => {
   const [status, setStatus] = useState("active");
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalUser, setTotalUser] = useState();
+
 
   const myID = sessionStorage.getItem("id");
 
@@ -20,6 +22,7 @@ const UserList = () => {
     setCurrentPage(1); // Reset to the first page when the status changes
   }, [setStatus]);
 
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -27,8 +30,12 @@ const UserList = () => {
       if (status === "active") {
         response = await getAllUsers(currentPage);
       } else {
-        response = await getAllNonActiveUsers();
+        response = await getAllNonActiveUsers(currentPage);
       }
+      
+      let isActive = getActive()
+      
+      setTotalUser (await getTotalUsers(isActive))
       setUsers(response);
       setLoading(false);
     };
@@ -39,6 +46,13 @@ const UserList = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const getActive = () => {
+    if (status === "active" ) {
+      return 1
+    }else
+      return 0
+  }
 
 
   const deactivateAccount = async (id) => {
@@ -96,6 +110,9 @@ const UserList = () => {
     </tr>
   ));
 
+  const totalPages = Math.ceil(totalUser / 5);
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
   return (
     <div>
       <Container fluid className='full-height-container'>
@@ -131,15 +148,20 @@ const UserList = () => {
               </tbody>
             </Table>
             {/* Pagination */}
+            
             <div>
               <ButtonGroup>
-                <Button className='pagination-button' color='primary' onClick={() => paginate(1)} > 1  </Button> 
-                <Button className='pagination-button' color='primary' onClick={() => paginate(2)} > 2  </Button>
-                <Button className='pagination-button' color='primary' onClick={() => paginate(3)} > 3  </Button>
-                <Button className='pagination-button' color='primary' onClick={() => paginate(4)} > 4  </Button>
-                <Button className='pagination-button' color='primary' onClick={() => paginate(5)} > 5  </Button>
+                {pageNumbers.map(number => (
+                  <Button
+                    key={number}
+                    className='pagination-button'
+                    color='primary'
+                    onClick={() => paginate(number)}
+                  >
+                    {number}
+                  </Button>
+                ))}
               </ButtonGroup>
-              {/* Add more buttons as needed */}
             </div>
 
 

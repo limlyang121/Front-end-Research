@@ -3,10 +3,10 @@ import "./LandingText.css"
 
 
 const nextUpdate = [
-    "Add Page Numbering in Table (Front-End)",
-    "Add Page indexing when Grabbing user Data (Back-End)",
+    "Add Page Numbering in Table (Front-End) <-Only User Account Now",
+    "Add Page indexing when Grabbing user Data (Back-End) <- Only User Account Now" ,
     "Add More animation for better User experience",
-    "Design a better Landing page"
+    "Design a better Landing page (On this)"
 ]
 
 

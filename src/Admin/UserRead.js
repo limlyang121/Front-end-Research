@@ -50,7 +50,7 @@ const UserRead = () => {
         }
         fecthData();
 
-    }, [id, setUser]);
+    }, [id, setUser, navigate]);
 
 
     const handleNewPasswordChange = (event) => {
