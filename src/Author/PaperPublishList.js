@@ -1,7 +1,7 @@
 // @flow strict
 
 import * as React from 'react';
-import { getMyPublishPapersAPI } from './Axios';
+import { getMyPublishPapersAPI, getMyTotalPublishPapersAPI } from './Axios';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Input, Label, Table } from 'reactstrap';
 import { dateFormat, downloadFile } from '../General/GeneralFunction';
@@ -15,6 +15,7 @@ function PaperPublishList() {
     const [status, setStatus] = React.useState("All");
     const [dateLimit, setDateLimit] = React.useState(0);
     const [loading, setLoading] = React.useState(true);
+    const [totalpapers, setTotalPapers] = React.useState(0)
 
 
 
@@ -26,11 +27,12 @@ function PaperPublishList() {
         const fetchData = async () => {
             let response = await getMyPublishPapersAPI()
             setPapers(response)
+            setTotalPapers(await getMyTotalPublishPapersAPI())
             setLoading(false)
         }
 
-        setLoading(true)
         fetchData();
+        setLoading(true)
 
         // alert(JSON.stringify(myPapers))
 
@@ -74,6 +76,10 @@ function PaperPublishList() {
             </tr>
         )
     })
+
+    const totalPages = Math.ceil(totalpapers / 5);
+    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
 
     return (
         <div>
@@ -120,6 +126,22 @@ function PaperPublishList() {
                                         {myPapersData}
                                     </tbody>
                                 </Table>
+
+
+                                <div>
+                                    <ButtonGroup>
+                                        {pageNumbers.map(number => (
+                                            <Button
+                                                key={number}
+                                                className='pagination-button'
+                                                color='primary'
+                                            // onClick={() => paginate(number)}
+                                            >
+                                                {number}
+                                            </Button>
+                                        ))}
+                                    </ButtonGroup>
+                                </div>
                             </div>
                         )}
                     </div>

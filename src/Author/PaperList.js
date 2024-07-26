@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import { getMyPapers, deletePapers } from './Axios';
+import { getMyPapers, deletePapers, getMyTotalPapers } from './Axios';
 import { dateFormat, downloadFile } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from '@material-ui/core';
@@ -12,6 +12,7 @@ import { CircularProgress } from '@material-ui/core';
 function PaperList() {
     const [myPapers, setPapers] = React.useState([])
     const [loading, setLoading] = React.useState(true);
+    const [totalPapers, setTotalPapers] = React.useState();
 
     React.useEffect(() => {
         setLoading(true);
@@ -19,6 +20,7 @@ function PaperList() {
         const fetchData = async () => {
             let response = await getMyPapers()
             setPapers(response)
+            setTotalPapers(await getMyTotalPapers())
             setLoading(false)
         }
         fetchData();
@@ -60,6 +62,10 @@ function PaperList() {
         )
     })
 
+    const totalPages = Math.ceil(totalPapers / 5);
+    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
+
     return (
         <div>
             <Container fluid className='full-height-container'>
@@ -90,9 +96,26 @@ function PaperList() {
                                 </tbody>
                             </Table>
                         )}
+
+
                     </div>
 
                 )}
+
+                <div>
+                    <ButtonGroup>
+                        {pageNumbers.map(number => (
+                            <Button
+                                key={number}
+                                className='pagination-button'
+                                color='primary'
+                                // onClick={() => paginate(number)}
+                            >
+                                {number}
+                            </Button>
+                        ))}
+                    </ButtonGroup>
+                </div>
 
             </Container>
         </div>
