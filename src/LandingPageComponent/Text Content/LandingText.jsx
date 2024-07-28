@@ -3,8 +3,9 @@ import "./LandingText.css"
 
 
 const nextUpdate = [
-    "Add Backend pagination for Author",
-    "Add More animation for better User experience",
+    "Add Backend pagination for Reviewer",
+    "Add Front-end and Backend for Conference chair",
+    "Add More animation for better User experience (when user click download and etc",
     "Design a better Landing page (On this)"
 ]
 
