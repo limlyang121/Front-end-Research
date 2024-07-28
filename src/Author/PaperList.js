@@ -20,23 +20,23 @@ function PaperList() {
     React.useEffect(() => {
         const fetchData = async () => {
             let response = await getMyTotalPapers()
-            setTotalPapers (response)
+            setTotalPapers(response)
         }
         fetchData();
 
     }, [])
 
 
-    React.useEffect (() => {
-        setLoading (true);
+    React.useEffect(() => {
+        setLoading(true);
         const fetchCurrentData = async () => {
             let response = await getMyPapers(currentPage);
-            setPapers (response)
-            setLoading (false);
+            setPapers(response)
+            setLoading(false);
         }
 
         fetchCurrentData();
-    },[currentPage])
+    }, [currentPage])
 
 
     const remove = async (id) => {
@@ -50,7 +50,7 @@ function PaperList() {
     }
 
     const paginate = (pageNumbers) => {
-        setCurrentPage (pageNumbers);
+        setCurrentPage(pageNumbers);
     }
 
     const myPapersData = myPapers.map(paper => {
@@ -112,25 +112,27 @@ function PaperList() {
                             </Table>
                         )}
 
+                        <div>
+                            <ButtonGroup>
+                                {pageNumbers.map(number => (
+                                    <Button
+                                        key={number}
+                                        className='pagination-button'
+                                        color='primary'
+                                        onClick={() => paginate(number)}
+                                    >
+                                        {number}
+                                    </Button>
+                                ))}
+                            </ButtonGroup>
+                        </div>
+
 
                     </div>
 
                 )}
 
-                <div>
-                    <ButtonGroup>
-                        {pageNumbers.map(number => (
-                            <Button
-                                key={number}
-                                className='pagination-button'
-                                color='primary'
-                                onClick={() => paginate(number)}
-                            >
-                                {number}
-                            </Button>
-                        ))}
-                    </ButtonGroup>
-                </div>
+
 
             </Container>
         </div>
