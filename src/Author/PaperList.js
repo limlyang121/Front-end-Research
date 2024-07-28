@@ -13,19 +13,30 @@ function PaperList() {
     const [myPapers, setPapers] = React.useState([])
     const [loading, setLoading] = React.useState(true);
     const [totalPapers, setTotalPapers] = React.useState();
+    const [currentPage, setCurrentPage] = React.useState(1);
+
+
 
     React.useEffect(() => {
-        setLoading(true);
-
         const fetchData = async () => {
-            let response = await getMyPapers()
-            setPapers(response)
-            setTotalPapers(await getMyTotalPapers())
-            setLoading(false)
+            let response = await getMyTotalPapers()
+            setTotalPapers (response)
         }
         fetchData();
 
     }, [])
+
+
+    React.useEffect (() => {
+        setLoading (true);
+        const fetchCurrentData = async () => {
+            let response = await getMyPapers(currentPage);
+            setPapers (response)
+            setLoading (false);
+        }
+
+        fetchCurrentData();
+    },[currentPage])
 
 
     const remove = async (id) => {
@@ -36,6 +47,10 @@ function PaperList() {
                     setPapers(updatedGroups);
                 });
         }
+    }
+
+    const paginate = (pageNumbers) => {
+        setCurrentPage (pageNumbers);
     }
 
     const myPapersData = myPapers.map(paper => {
@@ -109,7 +124,7 @@ function PaperList() {
                                 key={number}
                                 className='pagination-button'
                                 color='primary'
-                                // onClick={() => paginate(number)}
+                                onClick={() => paginate(number)}
                             >
                                 {number}
                             </Button>

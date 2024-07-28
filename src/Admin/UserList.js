@@ -16,6 +16,11 @@ const UserList = () => {
 
 
   const myID = sessionStorage.getItem("id");
+  
+  const getActive = useCallback(() => {
+    return status === "active" ? 1 : 0;
+  }, [status]);
+  
 
   const changeList = useCallback((stat) => {
     setStatus(stat);
@@ -23,6 +28,16 @@ const UserList = () => {
   }, [setStatus]);
 
 
+  useEffect (() => {
+    const fetchTotalUser = async () => {
+      let isActive = getActive()
+      let response = await getTotalUsers (isActive)
+      setTotalUser (response)      
+    }
+    fetchTotalUser (status)
+
+  },[status,getActive])
+  
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -33,26 +48,18 @@ const UserList = () => {
         response = await getAllNonActiveUsers(currentPage);
       }
       
-      let isActive = getActive()
       
-      setTotalUser (await getTotalUsers(isActive))
       setUsers(response);
       setLoading(false);
     };
 
     fetchData();
-  }, [status, currentPage]);
+  }, [status,currentPage]);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const getActive = () => {
-    if (status === "active" ) {
-      return 1
-    }else
-      return 0
-  }
 
 
   const deactivateAccount = async (id) => {

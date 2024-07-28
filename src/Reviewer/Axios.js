@@ -58,9 +58,18 @@ export const deleteFromBidAPI = async (id) => {
     return response.data;
 }
 
+export const getTotalAcceptedBidAPI = async () => {
+    let response = await api.get(`bids/accepted/total`)
+    return response.data
+}
 
 export const getAcceptedBidAPI = async () => {
     let response = await api.get(`bids/accepted`)
+    return response.data;
+}
+
+export const getMyTotalReviewsAPI = async () => {
+    let response = await api.get(`reviews/myReviews/total`)
     return response.data;
 }
 

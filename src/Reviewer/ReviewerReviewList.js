@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import { getAcceptedBidAPI, getMyReviewsAPI } from './Axios';
+import { getAcceptedBidAPI, getMyReviewsAPI, getMyTotalReviewsAPI, getTotalAcceptedBidAPI } from './Axios';
 import { dateFormat, downloadFile } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
@@ -16,11 +16,30 @@ function ReviewerReviewList() {
     const [bids, setBids] = React.useState([])
     const [reviews, setReviews] = React.useState([])
     const [loading, setLoading] = React.useState(true);
+    const [curentPage, setCurrentPage] = React.useState(1);
+    const [totalData, setTotalData] = React.useState();
 
 
     const changeList = React.useCallback((stat) => {
         setStatus(stat);
+        setCurrentPage (1)
     }, [setStatus])
+
+
+
+    React.useEffect(() => {
+        const fetchTotalData = async () =>{
+            let response
+            if (status === "Pending"){
+                response = await getTotalAcceptedBidAPI();
+            }else if (status === "Complete"){
+                response = await getMyTotalReviewsAPI();
+            }
+            setTotalData (response)
+        }
+
+        fetchTotalData()
+    },[status])
 
     React.useEffect(() => {
         const fetchAcceptedData = async () => {
@@ -37,8 +56,6 @@ function ReviewerReviewList() {
 
         fetchAcceptedData();
         fetchCompletedData();
-
-
 
     }, [])
 

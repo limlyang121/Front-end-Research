@@ -16,6 +16,7 @@ function PaperPublishList() {
     const [dateLimit, setDateLimit] = React.useState(0);
     const [loading, setLoading] = React.useState(true);
     const [totalpapers, setTotalPapers] = React.useState(0)
+    const [currentPage, setCurrentPage] = React.useState (1)
 
 
 
@@ -25,18 +26,26 @@ function PaperPublishList() {
 
     React.useEffect(() => {
         const fetchData = async () => {
-            let response = await getMyPublishPapersAPI()
-            setPapers(response)
-            setTotalPapers(await getMyTotalPublishPapersAPI())
-            setLoading(false)
+            let response = await getMyTotalPublishPapersAPI()
+            setTotalPapers (response)
         }
 
         fetchData();
-        setLoading(true)
 
-        // alert(JSON.stringify(myPapers))
 
     }, [])
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            setLoading (true)
+            let response = await getMyPublishPapersAPI(currentPage)
+            setPapers(response)
+            setLoading (false)
+        }
+        fetchData()
+        
+
+    }, [currentPage])
 
     const changeList = ((stat) => {
         setStatus(stat)
@@ -48,6 +57,10 @@ function PaperPublishList() {
         const diffTime = Math.abs(currentDate - new Date(paper.paperInfo.upload).getTime())
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         return (diffDays)
+    }
+
+    const pagination = (pageNumbers) => {
+        setCurrentPage (pageNumbers)
     }
 
 
@@ -135,7 +148,7 @@ function PaperPublishList() {
                                                 key={number}
                                                 className='pagination-button'
                                                 color='primary'
-                                            // onClick={() => paginate(number)}
+                                                onClick={() => pagination(number)}
                                             >
                                                 {number}
                                             </Button>

@@ -39,8 +39,12 @@ export const getAllPapers = async () => {
 
 }
 
-export const getMyPapers = async () => {
-    let response = await api.get(`papers/myPapers`)
+export const getMyPapers = async (pageNumber) => {
+    let response = await api.get(`papers/myPapers`, {
+        params : {
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 }
 
@@ -49,8 +53,12 @@ export const getMyTotalPapers = async () => {
     return response.data;
 }
 
-export const getMyPublishPapersAPI = async () => {
-    let response = await api.get(`papers/myPapers/publish`)
+export const getMyPublishPapersAPI = async (pageNumber) => {
+    let response = await api.get(`papers/myPapers/publish`,{
+        params:{
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 }
 
