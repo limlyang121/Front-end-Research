@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getPendingPapers, addToBlackListAPI, getBanPapers, DeleteFromBlackListAPI, addToBidAPI } from './Axios';
+import { getPendingPapers, addToBlackListAPI, getBanPapers, DeleteFromBlackListAPI, addToBidAPI, getTotalPendingPapers, getTotalBanPapers } from './Axios';
 import { Button, ButtonGroup, Container, Table, Form, Input } from 'reactstrap';
 import { dateFormat, downloadFile, fullName } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
@@ -11,10 +11,27 @@ function ReviewerBid() {
     const [status, setStatus] = React.useState("bid");
     const id = sessionStorage.getItem("id")
     const [loading, setLoading] = React.useState(true);
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [totalPaper, setTotalPaper] = React.useState();
 
     const changeStatus = React.useCallback((stat) => {
         setStatus(stat)
+        setCurrentPage(1)
     }, [setStatus])
+
+    React.useEffect(() => {
+        const fetchTotalPaper = async () => {
+            let response;
+            if (status === "bid") {
+                response = await getTotalPendingPapers();
+                setTotalPaper(response)
+            } else if (status === "hide") {
+                response = await getTotalBanPapers();
+                setTotalPaper(response)
+            }
+        }
+        fetchTotalPaper();
+    }, [status])
 
 
     React.useEffect(() => {
@@ -37,8 +54,12 @@ function ReviewerBid() {
             fetchBanData()
         }
 
-
+        // console.log("Total papaer is " + totalPaper)
     }, [status, changeStatus])
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     const addToBlackList = async (event) => {
         event.preventDefault();
@@ -168,6 +189,8 @@ function ReviewerBid() {
     ))
     );
 
+    const totalPages = Math.ceil(totalPaper / 5);
+    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
 
 
@@ -191,22 +214,41 @@ function ReviewerBid() {
                         }
 
                         {displayPapers.length !== 0 && (
+                            <div>
 
-                            <Table striped bordered hover className="mt-4">
-                                <thead>
-                                    <tr>
-                                        <th style={{ width: "20%" }} >Paper Title </th>
-                                        <th style={{ width: "20%" }}>Paper Upload Date </th>
-                                        <th style={{ width: "20%" }}>Author Name </th>
-                                        <th width="40%" colSpan={3}>Action</th>
+                                <Table striped bordered hover className="mt-4">
+                                    <thead>
+                                        <tr>
+                                            <th style={{ width: "20%" }} >Paper Title </th>
+                                            <th style={{ width: "20%" }}>Paper Upload Date </th>
+                                            <th style={{ width: "20%" }}>Author Name </th>
+                                            <th width="40%" colSpan={3}>Action</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {displayBidPapers}
-                                </tbody>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {displayBidPapers}
+                                    </tbody>
 
-                            </Table>
+                                </Table>
+
+                                <div>
+                                    <ButtonGroup>
+                                        {pageNumbers.map(number => (
+                                            <Button
+                                                key={number}
+                                                className='pagination-button'
+                                                color='primary'
+                                                onClick={() => paginate(number)}
+                                            >
+                                                {number}
+                                            </Button>
+                                        ))}
+                                    </ButtonGroup>
+                                </div>
+
+                            </div>
+
                         )}
                     </div>
 

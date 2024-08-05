@@ -45,9 +45,9 @@ function ReviewerReviewList() {
             let response;
             try {
                 if (status === "Pending") {
-                    response = await getAcceptedBidAPI();
+                    response = await getAcceptedBidAPI(currentPage);
                 } else if (status === "Complete") {
-                    response = await getMyReviewsAPI();
+                    response = await getMyReviewsAPI(currentPage);
                 }
                 setData(response);
                 console.log("Fetched Data: ", response);
@@ -58,7 +58,12 @@ function ReviewerReviewList() {
             }
         };
         fetchMyData();
-    }, [status]);
+    }, [status, currentPage]);
+
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
     const displayBidStatusHeader = () => (
         <tr>
@@ -114,6 +119,10 @@ function ReviewerReviewList() {
         ))
     );
 
+    const totalPages = Math.ceil(totalData / 5);
+    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
+
     return (
         <div>
             <Container fluid className='full-height-container'>
@@ -144,6 +153,21 @@ function ReviewerReviewList() {
                                 {status === "Complete" && data.length !== 0 && displayReviewStatus(data)}
                             </tbody>
                         </Table>
+
+                        <div>
+                            <ButtonGroup>
+                                {pageNumbers.map(number => (
+                                    <Button
+                                        key={number}
+                                        className='pagination-button'
+                                        color='primary'
+                                        onClick={() => paginate(number)}
+                                    >
+                                        {number}
+                                    </Button>
+                                ))}
+                            </ButtonGroup>
+                        </div>
                     </div>
                 )}
             </Container>

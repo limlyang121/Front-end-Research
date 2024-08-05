@@ -4,6 +4,7 @@ import "./LandingText.css"
 
 const nextUpdate = [
     "Add Backend pagination for Reviewer",
+    "Add Button (1,2,3,4 and etc) and only show 5 thing at once in changelog ",
     "Add Front-end and Backend for Conference chair",
     "Add More animation for better User experience (when user click download and etc",
     "Design a better Landing page (On this)"
@@ -18,8 +19,8 @@ export const UserAccount = () => {
                 <thead className='thead-dark'>
                     <tr>
                         <th className="equal-width">Username</th>
-                        <th class="equal-width" >Password</th>
-                        <th class="equal-width">Role</th>
+                        <th className="equal-width" >Password</th>
+                        <th className="equal-width">Role</th>
                     </tr>
                 </thead>
                 <tbody>

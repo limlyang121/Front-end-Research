@@ -22,8 +22,18 @@ export const getMyReviewerDataAPI = async () => {
     return response.data;
 }
 
+export const getTotalPendingPapers = async () => {
+    let response = await api.get(`papers/bid/total`)
+    return response.data;
+}
+
 export const getPendingPapers = async () => {
     let response = await api.get(`papers/bid`)
+    return response.data;
+}
+
+export const getTotalBanPapers = async () => {
+    let response = await api.get(`papers/ban/total`)
     return response.data;
 }
 
@@ -63,8 +73,12 @@ export const getTotalAcceptedBidAPI = async () => {
     return response.data
 }
 
-export const getAcceptedBidAPI = async () => {
-    let response = await api.get(`bids/accepted`)
+export const getAcceptedBidAPI = async (pageNumber) => {
+    let response = await api.get(`bids/accepted`, {
+        params:{
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 }
 
@@ -73,8 +87,12 @@ export const getMyTotalReviewsAPI = async () => {
     return response.data;
 }
 
-export const getMyReviewsAPI = async () => {
-    let response = await api.get(`reviews/myReviews`)
+export const getMyReviewsAPI = async (pageNumber) => {
+    let response = await api.get(`reviews/myReviews`, {
+        params: {
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 }
 

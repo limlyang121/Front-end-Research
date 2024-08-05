@@ -34,6 +34,7 @@ function NewChangeBox() {
   };
 
   const newChanges = [
+    "Added Pagionation in Reviewer (Review Paper section) for backend and Front-end",
     "Pagination for Author Completed (Front-end And Backend), Reviewer halfway",
     "Add Pagination for Author on front-end (Backend when i insert enough dummy data)",
     "Add Pagination on User Account in Both Front-End and Backend",
