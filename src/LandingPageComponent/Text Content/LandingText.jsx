@@ -7,7 +7,8 @@ const nextUpdate = [
     "Add Button (1,2,3,4 and etc) and only show 5 thing at once in changelog ",
     "Add Front-end and Backend for Conference chair",
     "Add More animation for better User experience (when user click download and etc",
-    "Design a better Landing page (On this)"
+    "Design a better Landing page (On this)",
+    "Change the limit of filename to exceed 50(50 only for now because i set the varchar to 50 when i first start the project"
 ]
 
 

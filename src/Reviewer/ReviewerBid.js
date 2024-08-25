@@ -36,12 +36,12 @@ function ReviewerBid() {
 
     React.useEffect(() => {
         const fetchBidData = async () => {
-            let response = await getPendingPapers();
+            let response = await getPendingPapers(currentPage);
             setDisplayPaper(response)
             setLoading(false)
         }
         const fetchBanData = async () => {
-            let response = await getBanPapers();
+            let response = await getBanPapers(currentPage);
             setDisplayPaper(response)
             setLoading(false)
         }
@@ -55,7 +55,7 @@ function ReviewerBid() {
         }
 
         // console.log("Total papaer is " + totalPaper)
-    }, [status, changeStatus])
+    }, [status, currentPage])
 
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);

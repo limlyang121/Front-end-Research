@@ -34,6 +34,7 @@ function NewChangeBox() {
   };
 
   const newChanges = [
+    "Added Pagination in Reviewer (Bid Paper section) And Add more dummy data to test if pagination is working",
     "Added Pagionation in Reviewer (Review Paper section) for backend and Front-end",
     "Pagination for Author Completed (Front-end And Backend), Reviewer halfway",
     "Add Pagination for Author on front-end (Backend when i insert enough dummy data)",

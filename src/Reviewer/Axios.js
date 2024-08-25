@@ -27,8 +27,12 @@ export const getTotalPendingPapers = async () => {
     return response.data;
 }
 
-export const getPendingPapers = async () => {
-    let response = await api.get(`papers/bid`)
+export const getPendingPapers = async (pageNumber) => {
+    let response = await api.get(`papers/bid`,{
+        params:{
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 }
 
@@ -37,8 +41,12 @@ export const getTotalBanPapers = async () => {
     return response.data;
 }
 
-export const getBanPapers = async () => {
-    let response = await api.get(`papers/ban`)
+export const getBanPapers = async (pageNumber) => {
+    let response = await api.get(`papers/ban`, {
+        params:{
+            pageNumber : pageNumber
+        }
+    })
     return response.data;
 }
 
