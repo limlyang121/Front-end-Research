@@ -8,6 +8,7 @@ import { FaCheck, FaRegTimesCircle } from 'react-icons/fa';
 import { MdRestore } from 'react-icons/md';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
+import Swal from 'sweetalert2';
 
 
 function ConferenceReviewerBid() {
@@ -45,20 +46,59 @@ function ConferenceReviewerBid() {
     }
 
     const CancelAcceptRejectPaper = async (bid, stat) => {
-        if (window.confirm("Are you sure ? ")) {
-            let response;
-            if (stat === "Accept") {
-                response = await AcceptBidAPI(bid.bidID);
-            } else if (stat === "Reject") {
-                response = await RejectBidAPI(bid.bidID);
-            } else {
-                response = await cancelBidAPI(bid.bidID);
-            }
-            alert(response);
-            let updatedBids = [...bids].filter(i => i.bidID !== bid.bidID)
-            setBids(updatedBids)
+        let config = {
+            title: `Are you sure you want to ${stat.toLowerCase()}?`,
+            confirmButtonColor: '#3085d6', // Default blue
+            confirmButtonText: `Yes, ${stat.toLowerCase()} it!`
+        };
+
+        if (stat === "Accept") {
+            config.confirmButtonColor = '#28a745'; // Green
+        } else if (stat === "Reject" || stat === "Cancel") {
+            config.confirmButtonColor = '#d33'; // Red
         }
-    }
+
+        Swal.fire({
+            title: config.title,
+            text: "This action will update the paper's bidding state.",
+            icon: stat === "Accept" ? 'question' : 'warning',
+            showCancelButton: true,
+            confirmButtonColor: config.confirmButtonColor,
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: config.confirmButtonText,
+            showLoaderOnConfirm: true,
+            preConfirm: async () => {
+                // 3. Run the correct API based on the 'stat' parameter inside the loader
+                try {
+                    let response;
+                    if (stat === "Accept") {
+                        response = await AcceptBidAPI(bid.bidID);
+                    } else if (stat === "Reject") {
+                        response = await RejectBidAPI(bid.bidID);
+                    } else {
+                        response = await cancelBidAPI(bid.bidID);
+                    }
+                    return response; // Pass API string response forward
+                } catch (error) {
+                    Swal.showValidationMessage(`Action failed: ${error}`);
+                }
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            // 4. Once the dynamic API completes successfully
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: result.value, // Shows your API string response
+                    icon: 'success'
+                });
+
+                // 5. Filter the local React state array and re-render
+                let updatedBids = [...bids].filter(i => i.bidID !== bid.bidID);
+                setBids(updatedBids);
+            }
+        });
+    };
 
     const BidActionSwitch = (bid) => {
         let showAction;

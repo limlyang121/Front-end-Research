@@ -1,10 +1,21 @@
 import { saveAs } from "file-saver"
 import { format } from "date-fns"
 import { downloadPapersAPI } from "./Axios/DownloadAxios";
+import Swal from "sweetalert2";
 
 
 export const downloadFile = async (id) => {
     try {
+        Swal.fire({
+            title: 'Downloading Paper',
+            html: 'Please wait while your file is processing...',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading(); // Triggers the native loading spinner animation
+            }
+        });
+
         let response = await downloadPapersAPI(parseInt(id))
         const contentDispositionHeader = response.headers['content-disposition'];
         const filename = contentDispositionHeader.split(';')[1].trim().split('=')[1].replace(/"/g, '');
@@ -12,8 +23,14 @@ export const downloadFile = async (id) => {
         const blob = new Blob([response.data], { type: "application/pdf" })
         saveAs(blob, filename)
 
+        Swal.close(); 
+
     } catch (error) {
-        alert("Unknown Error")
+        Swal.fire({
+            icon: 'error',
+            title: 'Download Failed',
+            text: 'An unknown error occurred.',
+        });
     }
 }
 

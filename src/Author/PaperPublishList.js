@@ -18,8 +18,6 @@ function PaperPublishList() {
     const [totalpapers, setTotalPapers] = React.useState(0)
     const [currentPage, setCurrentPage] = React.useState (1)
 
-
-
     const changeDateLimit = (num) => {
         setDateLimit(parseInt(num))
     }

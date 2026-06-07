@@ -19,8 +19,6 @@ const LandingPage = () => {
     "Design a better Landing page"
   ]
 
-
-
   const boxContent = 'This is the box content.';
   const dotContents = ['', 'Content 2', 'Content 3'];
 

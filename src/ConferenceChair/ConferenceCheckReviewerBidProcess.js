@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import { deleteFromBidAPI } from '../Reviewer/Axios';
 import { dateFormat, fullNameDetails } from '../General/GeneralFunction';
 import { CircularProgress } from "@material-ui/core";
+import Swal from 'sweetalert2';
 
 
 function ConferenceCheckReviewerBidProcess() {
@@ -25,14 +26,40 @@ function ConferenceCheckReviewerBidProcess() {
     }, [id])
 
     const deleteBid = async (bidID) => {
-        if (window.confirm("Delete this Bid? ")) {
-            await deleteFromBidAPI(bidID).then((response) => {
-                alert(response);
+        Swal.fire({
+            title: 'Delete this Bid?',
+            text: "This action cannot be undone.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33', // Red for delete
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            showLoaderOnConfirm: true, // 2. Enable the loading spinner
+            preConfirm: async () => {
+                // 3. Handle the API call inside the loader
+                try {
+                    const response = await deleteFromBidAPI(bidID);
+                    return response; // Pass the response to the next block
+                } catch (error) {
+                    Swal.showValidationMessage(`Delete failed: ${error}`);
+                }
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            // 4. This runs after the API completes successfully
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: result.value, // Your API string response text
+                    icon: 'success'
+                });
+
+                // 5. Update your local state array to remove the deleted item
                 let updatedBids = [...bidList].filter(i => i.bidID !== bidID);
                 setBidsList(updatedBids);
-            })
-        }
-    }
+            }
+        });
+    };
 
     return (
         <div>

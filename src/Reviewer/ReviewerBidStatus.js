@@ -8,6 +8,7 @@ import { downloadFile } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 
 import { CircularProgress } from "@material-ui/core";
+import Swal from 'sweetalert2';
 
 
 function ReviewerBidStatus() {
@@ -35,14 +36,40 @@ function ReviewerBidStatus() {
     }, [id, status, changeList])
 
     const deleteFromBid = async (id) => {
-        if (window.confirm("Unbid the paper?")) {
-            await deleteFromBidAPI(id).then((response) => {
-                alert(response)
-                let updatedGroups = [...myBid].filter(i => parseInt(i.bidID) !== parseInt(id))
-                setBids(updatedGroups)
-            })
-        }
-    }
+        Swal.fire({
+            title: 'Unbid the paper?',
+            text: "You can re-bid later if the window is still open.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, unbid it!',
+            showLoaderOnConfirm: true, // 1. Enable the built-in loader
+            preConfirm: async () => {
+                // 2. This runs AFTER they click confirm, showing the loading spinner automatically
+                try {
+                    const response = await deleteFromBidAPI(id);
+                    return response; // Pass the response to the next .then()
+                } catch (error) {
+                    Swal.showValidationMessage(`Request failed: ${error}`);
+                }
+            },
+            allowOutsideClick: () => !Swal.isLoading() // Prevent closing the alert by clicking outside while loading
+        }).then((result) => {
+            // 3. This runs once the API call finishes successfully
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Unbidded!',
+                    text: result.value, // This is the response returned from preConfirm
+                    icon: 'success'
+                });
+
+                // 4. Update state
+                let updatedGroups = [...myBid].filter(i => parseInt(i.bidID) !== parseInt(id));
+                setBids(updatedGroups);
+            }
+        });
+    };
 
     const PendingAction = (bid) => {
         return (

@@ -4,6 +4,7 @@ import { Button, ButtonGroup, Container, Table, Form, Input } from 'reactstrap';
 import { dateFormat, downloadFile, fullName } from '../General/GeneralFunction';
 import { NoDataToDisplay } from '../General/GeneralDisplay';
 import { CircularProgress } from "@material-ui/core";
+import Swal from 'sweetalert2';
 
 function ReviewerBid() {
 
@@ -110,26 +111,54 @@ function ReviewerBid() {
     const addToBid = async (event) => {
         event.preventDefault();
 
-        if (window.confirm("Bid the papers?")) {
-            const form = event.target;
-            const formData = new FormData(form);
-            const bid = {
-                paper: {
-                    paperID: formData.get('paper.paperID')
-                },
-                reviewer: {
-                    reviewerID: formData.get('reviewer.reviewerID'),
-                },
-                status: ""
-            }
+        // 1. Grab your form data upfront
+        const form = event.target;
+        const formData = new FormData(form);
+        const bid = {
+            paper: {
+                paperID: formData.get('paper.paperID')
+            },
+            reviewer: {
+                reviewerID: formData.get('reviewer.reviewerID'),
+            },
+            status: ""
+        };
 
-            await addToBidAPI(bid).then((response) => {
-                alert(response)
+        // 2. Open the confirmation dialog with the loader enabled
+        Swal.fire({
+            title: 'Bid the papers?',
+            text: 'Are you sure you want to place a bid on this paper?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745', // Green color for success/add action
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, bid it!',
+            showLoaderOnConfirm: true,
+            preConfirm: async () => {
+                // 3. This fires the spinner and handles the API call in the background
+                try {
+                    const response = await addToBidAPI(bid);
+                    return response; // Pass response to the final .then()
+                } catch (error) {
+                    Swal.showValidationMessage(`Submission failed: ${error}`);
+                }
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            // 4. This runs after the API completes successfully
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Bidded!',
+                    text: result.value, // Your API string response text
+                    icon: 'success'
+                });
+
+                // 5. Update your local React state to remove the paper from display
                 let updatedPapers = [...displayPapers].filter(i => parseInt(i.paperID) !== parseInt(bid.paper.paperID));
-                setDisplayPaper(updatedPapers)
-            })
-        }
-    }
+                setDisplayPaper(updatedPapers);
+            }
+        });
+    };
 
     const BidButtonDsiplay = (paper) => {
         return (
@@ -140,7 +169,6 @@ function ReviewerBid() {
                     <Input name="reviewer.reviewerID" id="reviewer.reviewerID" value={id} type="hidden" />
                     <Input name="paper.paperID" id="paper.paperID" value={paper.paperID} type="hidden" />
                     <Button size="sm" color="primary" type='submit'>Bid Papers</Button>
-
                 </Form>
                 <Form onSubmit={addToBlackList} >
                     <Input name="reviewer.reviewerID" id="reviewer.reviewerID" value={id} type="hidden" />

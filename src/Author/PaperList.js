@@ -15,8 +15,6 @@ function PaperList() {
     const [totalPapers, setTotalPapers] = React.useState();
     const [currentPage, setCurrentPage] = React.useState(1);
 
-
-
     React.useEffect(() => {
         const fetchData = async () => {
             let response = await getMyTotalPapers()
